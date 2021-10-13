@@ -1,0 +1,35 @@
+# This is a basic workflow to help you get started with Actions
+
+name: build
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events 
+  push:
+  pull_request:
+
+  # Allows this workflow to be run manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    name: Build
+    # The type of runner that the job will run on
+    runs-on: macos-11
+    
+    strategy:
+      matrix:
+        destination: ['platform=iOS Simulator,OS=14.5,name=iPhone 12 Pro']
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Builds project
+      - name: Build
+        run: |
+          xcodebuild clean build -project ToDo.xcodeproj -scheme ToDo -destination="${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO ONLY_ACTIVE_ARCH=NO
