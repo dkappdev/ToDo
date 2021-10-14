@@ -16,6 +16,8 @@
 		E2C7930B2718269D00565801 /* ToDoItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C793072718269D00565801 /* ToDoItem+CoreDataProperties.swift */; };
 		E2C7930C2718269D00565801 /* ToDoGroup+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C793082718269D00565801 /* ToDoGroup+CoreDataClass.swift */; };
 		E2C7930D2718269D00565801 /* ToDoGroup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C793092718269D00565801 /* ToDoGroup+CoreDataProperties.swift */; };
+		E2C7930F2718281900565801 /* ToDoGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C7930E2718281900565801 /* ToDoGroupModel.swift */; };
+		E2C79311271829F400565801 /* ToDoItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C79310271829F400565801 /* ToDoItemModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		E2C793072718269D00565801 /* ToDoItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDoItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E2C793082718269D00565801 /* ToDoGroup+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDoGroup+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E2C793092718269D00565801 /* ToDoGroup+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDoGroup+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E2C7930E2718281900565801 /* ToDoGroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoGroupModel.swift; sourceTree = "<group>"; };
+		E2C79310271829F400565801 /* ToDoItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +129,7 @@
 		E2C7930027181C1B00565801 /* ToDoItem */ = {
 			isa = PBXGroup;
 			children = (
+				E2C79310271829F400565801 /* ToDoItemModel.swift */,
 				E2C793062718269D00565801 /* ToDoItem+CoreDataClass.swift */,
 				E2C793072718269D00565801 /* ToDoItem+CoreDataProperties.swift */,
 			);
@@ -134,6 +139,7 @@
 		E2C7930527181EF400565801 /* ToDoGroup */ = {
 			isa = PBXGroup;
 			children = (
+				E2C7930E2718281900565801 /* ToDoGroupModel.swift */,
 				E2C793082718269D00565801 /* ToDoGroup+CoreDataClass.swift */,
 				E2C793092718269D00565801 /* ToDoGroup+CoreDataProperties.swift */,
 			);
@@ -210,9 +216,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2C79311271829F400565801 /* ToDoItemModel.swift in Sources */,
 				E2C7930A2718269D00565801 /* ToDoItem+CoreDataClass.swift in Sources */,
 				E2622D172715DE30006AA64E /* AppDelegate.swift in Sources */,
 				E2622D192715DE30006AA64E /* SceneDelegate.swift in Sources */,
+				E2C7930F2718281900565801 /* ToDoGroupModel.swift in Sources */,
 				E2C7930D2718269D00565801 /* ToDoGroup+CoreDataProperties.swift in Sources */,
 				E2C7930C2718269D00565801 /* ToDoGroup+CoreDataClass.swift in Sources */,
 				E2C7930B2718269D00565801 /* ToDoItem+CoreDataProperties.swift in Sources */,
