@@ -21,6 +21,7 @@ extension ToDoItem {
     @NSManaged public var uuid: UUID?
     @NSManaged public var isCompleted: Bool
     @NSManaged public var text: String?
+    @NSManaged public var group: ToDoGroup?
 
 }
 
