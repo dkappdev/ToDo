@@ -16,11 +16,11 @@ extension ToDoItem {
         return NSFetchRequest<ToDoItem>(entityName: "ToDoItem")
     }
 
-    @NSManaged public var dueDate: Date?
     @NSManaged public var dateAdded: Date?
-    @NSManaged public var uuid: UUID?
+    @NSManaged public var dueDate: Date?
     @NSManaged public var isCompleted: Bool
     @NSManaged public var text: String?
+    @NSManaged public var id: UUID?
     @NSManaged public var group: ToDoGroup?
 
 }

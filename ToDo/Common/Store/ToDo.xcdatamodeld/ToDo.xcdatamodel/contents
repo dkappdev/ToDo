@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20G165" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ToDoGroup" representedClassName="ToDoGroup" syncable="YES">
-        <attribute name="color" optional="YES" attributeType="Transformable" customClassName="UIColor"/>
+        <attribute name="color" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName" customClassName="UIColor"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ToDoItem" inverseName="group" inverseEntity="ToDoItem"/>
     </entity>
     <entity name="ToDoItem" representedClassName="ToDoItem" syncable="YES">
         <attribute name="dateAdded" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dueDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isCompleted" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="text" optional="YES" attributeType="String"/>
-        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ToDoGroup" inverseName="items" inverseEntity="ToDoGroup"/>
     </entity>
     <elements>
-        <element name="ToDoItem" positionX="-63" positionY="-18" width="128" height="133"/>
         <element name="ToDoGroup" positionX="-54" positionY="36" width="128" height="89"/>
+        <element name="ToDoItem" positionX="-63" positionY="-18" width="128" height="119"/>
     </elements>
 </model>

@@ -17,9 +17,9 @@ extension ToDoGroup {
         return NSFetchRequest<ToDoGroup>(entityName: "ToDoGroup")
     }
 
-    @NSManaged public var uuid: UUID?
     @NSManaged public var color: UIColor?
     @NSManaged public var name: String?
+    @NSManaged public var id: UUID?
     @NSManaged public var items: NSOrderedSet?
 
 }

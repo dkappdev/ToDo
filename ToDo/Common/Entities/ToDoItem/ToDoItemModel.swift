@@ -21,3 +21,13 @@ public class ToDoItemModel {
     /// Group that contains the item
     public weak var group: ToDoGroup?
 }
+
+extension ToDoItemModel: Hashable {
+    public static func == (lhs: ToDoItemModel, rhs: ToDoItemModel) -> Bool {
+        lhs.uuid == rhs.uuid
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(uuid)
+    }
+}

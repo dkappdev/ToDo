@@ -18,3 +18,13 @@ public class ToDoGroupModel {
     /// To-do items for the groups
     public var items: [ToDoItemModel]?
 }
+
+extension ToDoGroupModel: Hashable {
+    public static func == (lhs: ToDoGroupModel, rhs: ToDoGroupModel) -> Bool {
+        lhs.uuid == rhs.uuid
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(uuid)
+    }
+}
