@@ -11,5 +11,9 @@ import CoreData
 
 @objc(ToDoItem)
 public class ToDoItem: NSManagedObject {
-
+    /// Creates an instance of `ToDoItemModel` from Core Data class
+    /// - Returns: Representation of a `ToDoItem` as a `ToDoItemModel`
+    public func model() -> ToDoItemModel? {
+        ToDoItemModel(dueDate: dueDate, dateAdded: dateAdded, id: id, isCompleted: isCompleted, text: text, group: group)
+    }
 }

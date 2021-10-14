@@ -20,6 +20,15 @@ public class ToDoItemModel {
     public var text: String?
     /// Group that contains the item
     public weak var group: ToDoGroup?
+    
+    public init(dueDate: Date?, dateAdded: Date?, id: UUID?, isCompleted: Bool, text: String?, group: ToDoGroup?) {
+        self.dueDate = dueDate
+        self.dateAdded = dateAdded
+        self.id = id
+        self.isCompleted = isCompleted
+        self.text = text
+        self.group = group
+    }
 }
 
 extension ToDoItemModel: Hashable {

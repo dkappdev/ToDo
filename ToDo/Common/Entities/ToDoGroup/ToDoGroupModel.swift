@@ -17,6 +17,13 @@ public class ToDoGroupModel {
     public var name: String?
     /// To-do items for the groups
     public var items: [ToDoItemModel]?
+    
+    public init(id: UUID?, color: UIColor?, name: String?, items: [ToDoItemModel]?) {
+        self.id = id
+        self.color = color
+        self.name = name
+        self.items = items
+    }
 }
 
 extension ToDoGroupModel: Hashable {
