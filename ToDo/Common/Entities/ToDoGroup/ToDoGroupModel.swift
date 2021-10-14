@@ -10,7 +10,7 @@ import UIKit
 
 public class ToDoGroupModel {
     /// Unique group identifier
-    public var uuid: UUID?
+    public var id: UUID?
     /// Group color
     public var color: UIColor?
     /// Group names
@@ -21,10 +21,10 @@ public class ToDoGroupModel {
 
 extension ToDoGroupModel: Hashable {
     public static func == (lhs: ToDoGroupModel, rhs: ToDoGroupModel) -> Bool {
-        lhs.uuid == rhs.uuid
+        lhs.id == rhs.id
     }
     
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(uuid)
+        hasher.combine(id)
     }
 }

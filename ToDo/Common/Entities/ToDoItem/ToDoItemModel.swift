@@ -13,7 +13,7 @@ public class ToDoItemModel {
     /// Date when the item was added
     public var dateAdded: Date?
     /// Unique item identifier
-    public var uuid: UUID?
+    public var id: UUID?
     /// Indicates whether or not to-do item is marked as complete
     public var isCompleted: Bool = false
     /// Text describing the to-do task
@@ -24,10 +24,10 @@ public class ToDoItemModel {
 
 extension ToDoItemModel: Hashable {
     public static func == (lhs: ToDoItemModel, rhs: ToDoItemModel) -> Bool {
-        lhs.uuid == rhs.uuid
+        lhs.id == rhs.id
     }
     
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(uuid)
+        hasher.combine(id)
     }
 }
