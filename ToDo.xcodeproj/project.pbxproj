@@ -12,6 +12,10 @@
 		E2622D212715DE30006AA64E /* ToDo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2622D1F2715DE30006AA64E /* ToDo.xcdatamodeld */; };
 		E2622D232715DE31006AA64E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2622D222715DE31006AA64E /* Assets.xcassets */; };
 		E2622D262715DE31006AA64E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2622D242715DE31006AA64E /* LaunchScreen.storyboard */; };
+		E2C792FE27181C0200565801 /* ToDoItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C792FC27181C0200565801 /* ToDoItem+CoreDataClass.swift */; };
+		E2C792FF27181C0200565801 /* ToDoItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C792FD27181C0200565801 /* ToDoItem+CoreDataProperties.swift */; };
+		E2C7930327181EF200565801 /* ToDoGroup+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C7930127181EF200565801 /* ToDoGroup+CoreDataClass.swift */; };
+		E2C7930427181EF200565801 /* ToDoGroup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C7930227181EF200565801 /* ToDoGroup+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		E2622D222715DE31006AA64E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E2622D252715DE31006AA64E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E2622D272715DE31006AA64E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E2C792FC27181C0200565801 /* ToDoItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDoItem+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E2C792FD27181C0200565801 /* ToDoItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDoItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E2C7930127181EF200565801 /* ToDoGroup+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDoGroup+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E2C7930227181EF200565801 /* ToDoGroup+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDoGroup+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +92,7 @@
 		E2A6252A27161E36003B33E6 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				E2C792FB27181BF100565801 /* Entities */,
 				E2A6252C27161E45003B33E6 /* Store */,
 			);
 			path = Common;
@@ -102,6 +111,33 @@
 				E2622D1F2715DE30006AA64E /* ToDo.xcdatamodeld */,
 			);
 			path = Store;
+			sourceTree = "<group>";
+		};
+		E2C792FB27181BF100565801 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				E2C7930527181EF400565801 /* ToDoGroup */,
+				E2C7930027181C1B00565801 /* ToDoItem */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		E2C7930027181C1B00565801 /* ToDoItem */ = {
+			isa = PBXGroup;
+			children = (
+				E2C792FC27181C0200565801 /* ToDoItem+CoreDataClass.swift */,
+				E2C792FD27181C0200565801 /* ToDoItem+CoreDataProperties.swift */,
+			);
+			path = ToDoItem;
+			sourceTree = "<group>";
+		};
+		E2C7930527181EF400565801 /* ToDoGroup */ = {
+			isa = PBXGroup;
+			children = (
+				E2C7930127181EF200565801 /* ToDoGroup+CoreDataClass.swift */,
+				E2C7930227181EF200565801 /* ToDoGroup+CoreDataProperties.swift */,
+			);
+			path = ToDoGroup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,8 +210,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2C792FE27181C0200565801 /* ToDoItem+CoreDataClass.swift in Sources */,
 				E2622D172715DE30006AA64E /* AppDelegate.swift in Sources */,
 				E2622D192715DE30006AA64E /* SceneDelegate.swift in Sources */,
+				E2C7930427181EF200565801 /* ToDoGroup+CoreDataProperties.swift in Sources */,
+				E2C7930327181EF200565801 /* ToDoGroup+CoreDataClass.swift in Sources */,
+				E2C792FF27181C0200565801 /* ToDoItem+CoreDataProperties.swift in Sources */,
 				E2622D212715DE30006AA64E /* ToDo.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
