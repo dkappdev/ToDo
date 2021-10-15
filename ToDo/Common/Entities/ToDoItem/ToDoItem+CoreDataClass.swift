@@ -16,4 +16,15 @@ public class ToDoItem: NSManagedObject {
     public func model() -> ToDoItemModel? {
         ToDoItemModel(dueDate: dueDate, dateAdded: dateAdded, id: id, isCompleted: isCompleted, text: text, group: group)
     }
+    
+    /// Converts `ToDoItemModel` to Core Data class
+    /// - Parameter model: an instance of `ToDoItemModel`
+    public func setup(with model: ToDoItemModel) {
+        dueDate = model.dueDate
+        dateAdded = model.dateAdded
+        id = model.id
+        isCompleted = model.isCompleted
+        text = model.text
+        group = model.group
+    }
 }

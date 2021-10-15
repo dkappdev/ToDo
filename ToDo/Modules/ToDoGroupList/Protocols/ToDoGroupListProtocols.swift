@@ -45,3 +45,7 @@ protocol AnyToDoGroupListInteractorOutput: AnyObject {
     func didRetrieveToDoGroupList(_ groupList: [ToDoGroupModel])
 }
 
+protocol AnyToDoGroupListLocalDataManager: AnyObject {
+    func retrieveToDoGroupList() -> [ToDoGroupModel]
+    func removeToDoGroup(_ group: ToDoGroupModel)
+}

@@ -23,4 +23,13 @@ public class ToDoGroup: NSManagedObject {
         
         return ToDoGroupModel(id: id, color: color, name: name, items: itemModels)
     }
+    
+    /// Converts `ToDoGroupModel` to Core Data class
+    /// - Parameter model: an instance of `ToDoGroupModel`
+    public func setup(with model: ToDoGroupModel) {
+        id = model.id
+        color = model.color
+        name = model.name
+        items = NSSet(array: model.items ?? [])
+    }
 }
