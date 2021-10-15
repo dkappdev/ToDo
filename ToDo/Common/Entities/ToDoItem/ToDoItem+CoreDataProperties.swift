@@ -2,7 +2,7 @@
 //  ToDoItem+CoreDataProperties.swift
 //  ToDo
 //
-//  Created by Daniil Kostitsin on 14.10.2021.
+//  Created by Daniil Kostitsin on 15.10.2021.
 //
 //
 
@@ -18,9 +18,9 @@ extension ToDoItem {
 
     @NSManaged public var dateAdded: Date?
     @NSManaged public var dueDate: Date?
+    @NSManaged public var id: UUID?
     @NSManaged public var isCompleted: Bool
     @NSManaged public var text: String?
-    @NSManaged public var id: UUID?
     @NSManaged public var group: ToDoGroup?
 
 }
