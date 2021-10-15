@@ -13,13 +13,11 @@ public class ToDoGroupListCoreDataManager: AnyToDoGroupListLocalDataManager {
     private let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
     
     func retrieveToDoGroupList() -> [ToDoGroupModel] {
-        do {
-            let groupObjects = try context?.fetch(ToDoGroup.fetchRequest())
-            guard let groupObjects = groupObjects else { return [] }
-            return groupObjects.compactMap { $0.model() }
-        } catch {
-            return []
-        }
+        // Retrieving Core Data class instances of to-do groups
+        let groupObjects = try? context?.fetch(ToDoGroup.fetchRequest())
+        guard let groupObjects = groupObjects else { return [] }
+        // Converting them to general models
+        return groupObjects.compactMap { $0.model() }
     }
     
     func removeToDoGroup(_ group: ToDoGroupModel) {
