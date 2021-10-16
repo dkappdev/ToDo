@@ -36,7 +36,8 @@ public protocol AnyToDoGroupListPresenter: AnyObject {
 
 // Presenter -> Interactor
 public protocol AnyToDoGroupListInteractorInput: AnyObject {
-    var presenter: AnyToDoGroupListPresenter? { get set }
+    var presenter: AnyToDoGroupListInteractorOutput? { get set }
+    var localDataManager: AnyToDoGroupListLocalDataManager? { get set }
     
     func retrieveToDoGroupList()
 }
