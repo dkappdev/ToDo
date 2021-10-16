@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 public class ToDoGroupListCoreDataManager: AnyToDoGroupListLocalDataManager {
-    private let appDelegate = (UIApplication.shared.delegate as? AppDelegate)
+    private let appDelegate = UIApplication.shared.delegate as? AppDelegate
     private let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
     
     func retrieveToDoGroupList() -> [ToDoGroupModel] {
@@ -26,10 +26,10 @@ public class ToDoGroupListCoreDataManager: AnyToDoGroupListLocalDataManager {
         fetchRequest.predicate = NSPredicate(format: "%K == %@", argumentArray: [\ToDoGroup.id, group.id as Any])
         guard let groupsToRemove = try? context?.fetch(fetchRequest) else { return }
         
+        // Removing fetched groups
         for groupToRemove in groupsToRemove {
             context?.delete(groupToRemove)
         }
-        
         appDelegate?.saveContext()
     }
 }
