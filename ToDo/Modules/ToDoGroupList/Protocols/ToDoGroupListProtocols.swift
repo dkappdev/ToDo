@@ -30,6 +30,7 @@ protocol AnyToDoGroupListPresenter: AnyObject {
     
     func viewDidLoad()
     func editGroup(_ group: ToDoGroupModel)
+    func deleteGroup(_ group: ToDoGroupModel)
     func showToDoItemList(for group: ToDoGroupModel)
 }
 
