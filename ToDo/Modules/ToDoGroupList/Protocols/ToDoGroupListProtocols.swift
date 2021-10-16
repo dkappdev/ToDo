@@ -8,14 +8,14 @@
 import UIKit
 
 // Presenter -> View
-protocol AnyToDoGroupListView: AnyObject {
+public protocol AnyToDoGroupListView: AnyObject {
     var presenter: AnyToDoGroupListPresenter? { get set }
     
     func showToDoGroups(_ groups: [ToDoGroupModel])
 }
 
 // Presenter -> Wireframe
-protocol AnyToDoGroupListWireframe: AnyObject {
+public protocol AnyToDoGroupListWireframe: AnyObject {
     static func createToDoGroupListModule() -> UIViewController
     
     func presentToDoItemList(for group: ToDoGroupModel)
@@ -23,7 +23,7 @@ protocol AnyToDoGroupListWireframe: AnyObject {
 }
 
 // View -> Presenter
-protocol AnyToDoGroupListPresenter: AnyObject {
+public protocol AnyToDoGroupListPresenter: AnyObject {
     var view: AnyToDoGroupListView? { get set }
     var interactor: AnyToDoGroupListInteractorInput? { get set }
     var wireframe: AnyToDoGroupListWireframe? { get set }
@@ -35,18 +35,18 @@ protocol AnyToDoGroupListPresenter: AnyObject {
 }
 
 // Presenter -> Interactor
-protocol AnyToDoGroupListInteractorInput: AnyObject {
+public protocol AnyToDoGroupListInteractorInput: AnyObject {
     var presenter: AnyToDoGroupListPresenter? { get set }
     
     func retrieveToDoGroupList()
 }
 
 // Interactor -> Presenter
-protocol AnyToDoGroupListInteractorOutput: AnyObject {
+public protocol AnyToDoGroupListInteractorOutput: AnyObject {
     func didRetrieveToDoGroupList(_ groupList: [ToDoGroupModel])
 }
 
-protocol AnyToDoGroupListLocalDataManager: AnyObject {
+public protocol AnyToDoGroupListLocalDataManager: AnyObject {
     func retrieveToDoGroupList() -> [ToDoGroupModel]
     func removeToDoGroup(_ group: ToDoGroupModel)
 }
