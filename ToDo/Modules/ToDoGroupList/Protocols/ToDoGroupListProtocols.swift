@@ -40,6 +40,7 @@ public protocol AnyToDoGroupListInteractorInput: AnyObject {
     var localDataManager: AnyToDoGroupListLocalDataManager? { get set }
     
     func retrieveToDoGroupList()
+    func removeToDoGroup(_ group: ToDoGroupModel)
 }
 
 // Interactor -> Presenter

@@ -14,4 +14,8 @@ public class ToDoGroupListInteractor: AnyToDoGroupListInteractorInput {
     public func retrieveToDoGroupList() {
         presenter?.didRetrieveToDoGroupList(localDataManager?.retrieveToDoGroupList() ?? [])
     }
+    
+    public func removeToDoGroup(_ group: ToDoGroupModel) {
+        localDataManager?.removeToDoGroup(group)
+    }
 }
