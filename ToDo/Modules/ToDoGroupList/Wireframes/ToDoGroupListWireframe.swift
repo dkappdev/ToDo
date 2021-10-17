@@ -31,6 +31,10 @@ public class ToDoGroupListWireframe: AnyToDoGroupListWireframe {
         assertionFailure("presentToDoItemList(for:) has not yet been implemented")
     }
     
+    public func presentAddGroupScreen() {
+        assertionFailure("presentAddGroupScreen() has not yet been implemented")
+    }
+    
     public func presentEditGroupScreen(for group: ToDoGroupModel) {
         assertionFailure("presentEditGroupScreen(for:) has not yet been implemented")
     }

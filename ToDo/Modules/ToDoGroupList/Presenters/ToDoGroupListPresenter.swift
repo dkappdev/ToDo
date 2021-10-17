@@ -27,6 +27,10 @@ public class ToDoGroupListPresenter: AnyToDoGroupListPresenter {
     public func showToDoItemList(for group: ToDoGroupModel) {
         wireframe?.presentToDoItemList(for: group)
     }
+    
+    public func addGroup() {
+        wireframe?.presentAddGroupScreen()
+    }
 }
 
 extension ToDoGroupListPresenter: AnyToDoGroupListInteractorOutput {

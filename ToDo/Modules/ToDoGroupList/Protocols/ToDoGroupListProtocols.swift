@@ -18,6 +18,7 @@ public protocol AnyToDoGroupListView: AnyObject {
 public protocol AnyToDoGroupListWireframe: AnyObject {
     static func createToDoGroupListModule() -> UIViewController
     
+    func presentAddGroupScreen()
     func presentToDoItemList(for group: ToDoGroupModel)
     func presentEditGroupScreen(for group: ToDoGroupModel)
 }
@@ -29,6 +30,7 @@ public protocol AnyToDoGroupListPresenter: AnyObject {
     var wireframe: AnyToDoGroupListWireframe? { get set }
     
     func viewDidLoad()
+    func addGroup()
     func editGroup(_ group: ToDoGroupModel)
     func deleteGroup(_ group: ToDoGroupModel)
     func showToDoItemList(for group: ToDoGroupModel)
