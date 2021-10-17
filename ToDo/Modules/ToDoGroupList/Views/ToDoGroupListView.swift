@@ -49,6 +49,18 @@ public class ToDoGroupListView: UITableViewController {
         
         return cell
     }
+    
+    public override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        .delete
+    }
+    
+    public override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let group = groupList.remove(at: indexPath.row)
+            presenter?.deleteGroup(group)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
 }
 
 extension ToDoGroupListView: AnyToDoGroupListView {

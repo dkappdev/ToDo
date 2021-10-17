@@ -22,7 +22,7 @@ public class ToDoGroupListCoreDataManager: AnyToDoGroupListLocalDataManager {
     public func removeToDoGroup(_ group: ToDoGroupModel) {
         // Creating a request to fetch all groups with the same id as the one we want to remove
         let fetchRequest = ToDoGroup.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "%K == %@", argumentArray: [\ToDoGroup.id, group.id as Any])
+        fetchRequest.predicate = NSPredicate(format: "id == %@", argumentArray: [group.id as Any])
         guard let groupsToRemove = try? persistenceController.context.fetch(fetchRequest) else { return }
         
         // Removing fetched groups
