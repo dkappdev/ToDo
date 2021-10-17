@@ -11,6 +11,8 @@
 		E20D2EBA271AE964008097A0 /* ToDoGroupListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20D2EB9271AE964008097A0 /* ToDoGroupListInteractor.swift */; };
 		E20D2EBC271AEB10008097A0 /* CoreDataPersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20D2EBB271AEB10008097A0 /* CoreDataPersistenceController.swift */; };
 		E20D2EBF271AEE98008097A0 /* ToDoGroupListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20D2EBE271AEE98008097A0 /* ToDoGroupListPresenter.swift */; };
+		E20D2EC2271B63DB008097A0 /* ToDoGroupListWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20D2EC1271B63DB008097A0 /* ToDoGroupListWireframe.swift */; };
+		E20D2EC7271C102F008097A0 /* ToDoGroupListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20D2EC6271C102F008097A0 /* ToDoGroupListView.swift */; };
 		E2622D172715DE30006AA64E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2622D162715DE30006AA64E /* AppDelegate.swift */; };
 		E2622D192715DE30006AA64E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2622D182715DE30006AA64E /* SceneDelegate.swift */; };
 		E2622D212715DE30006AA64E /* ToDo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2622D1F2715DE30006AA64E /* ToDo.xcdatamodeld */; };
@@ -30,6 +32,8 @@
 		E20D2EB9271AE964008097A0 /* ToDoGroupListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoGroupListInteractor.swift; sourceTree = "<group>"; };
 		E20D2EBB271AEB10008097A0 /* CoreDataPersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPersistenceController.swift; sourceTree = "<group>"; };
 		E20D2EBE271AEE98008097A0 /* ToDoGroupListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoGroupListPresenter.swift; sourceTree = "<group>"; };
+		E20D2EC1271B63DB008097A0 /* ToDoGroupListWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoGroupListWireframe.swift; sourceTree = "<group>"; };
+		E20D2EC6271C102F008097A0 /* ToDoGroupListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoGroupListView.swift; sourceTree = "<group>"; };
 		E2622D132715DE30006AA64E /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2622D162715DE30006AA64E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2622D182715DE30006AA64E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +85,22 @@
 			path = Presenters;
 			sourceTree = "<group>";
 		};
+		E20D2EC0271B63C9008097A0 /* Wireframes */ = {
+			isa = PBXGroup;
+			children = (
+				E20D2EC1271B63DB008097A0 /* ToDoGroupListWireframe.swift */,
+			);
+			path = Wireframes;
+			sourceTree = "<group>";
+		};
+		E20D2EC5271C1023008097A0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E20D2EC6271C102F008097A0 /* ToDoGroupListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		E2622D0A2715DE30006AA64E = {
 			isa = PBXGroup;
 			children = (
@@ -120,10 +140,12 @@
 		E29E383D2718BC910093F0E0 /* ToDoGroupList */ = {
 			isa = PBXGroup;
 			children = (
-				E20D2EBD271AEE8D008097A0 /* Presenters */,
 				E20D2EB8271ACF2D008097A0 /* Interactors */,
 				E20D2EB42719C768008097A0 /* LocalDataManagers */,
+				E20D2EBD271AEE8D008097A0 /* Presenters */,
 				E29E383E2718C4CA0093F0E0 /* Protocols */,
+				E20D2EC5271C1023008097A0 /* Views */,
+				E20D2EC0271B63C9008097A0 /* Wireframes */,
 			);
 			path = ToDoGroupList;
 			sourceTree = "<group>";
@@ -274,6 +296,7 @@
 				E20D2EBF271AEE98008097A0 /* ToDoGroupListPresenter.swift in Sources */,
 				E2C79311271829F400565801 /* ToDoItemModel.swift in Sources */,
 				E20D2EB72719C7A5008097A0 /* ToDoGroupListCoreDataManager.swift in Sources */,
+				E20D2EC2271B63DB008097A0 /* ToDoGroupListWireframe.swift in Sources */,
 				E20D2EBC271AEB10008097A0 /* CoreDataPersistenceController.swift in Sources */,
 				E2F2FDE027198FAF000D8ECF /* ToDoGroup+CoreDataProperties.swift in Sources */,
 				E29E38402718C4E90093F0E0 /* ToDoGroupListProtocols.swift in Sources */,
@@ -282,6 +305,7 @@
 				E20D2EBA271AE964008097A0 /* ToDoGroupListInteractor.swift in Sources */,
 				E2622D192715DE30006AA64E /* SceneDelegate.swift in Sources */,
 				E2F2FDDD27198FAF000D8ECF /* ToDoItem+CoreDataClass.swift in Sources */,
+				E20D2EC7271C102F008097A0 /* ToDoGroupListView.swift in Sources */,
 				E2F2FDDF27198FAF000D8ECF /* ToDoGroup+CoreDataClass.swift in Sources */,
 				E2C7930F2718281900565801 /* ToDoGroupModel.swift in Sources */,
 				E2622D212715DE30006AA64E /* ToDo.xcdatamodeld in Sources */,
