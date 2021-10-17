@@ -18,8 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        let controller = UIViewController()
-        controller.view.backgroundColor = .systemBackground
+        let controller = ToDoGroupListWireframe.createToDoGroupListModule()
         window.rootViewController = controller
         
         self.window = window

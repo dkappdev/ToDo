@@ -9,8 +9,22 @@ import UIKit
 
 public class ToDoGroupListWireframe: AnyToDoGroupListWireframe {
     public static func createToDoGroupListModule() -> UIViewController {
-        assertionFailure("createToDoGroupListModule() has not yet been implemented")
-        return UIViewController()
+        let view: AnyToDoGroupListView & UIViewController = ToDoGroupListView()
+        let presenter: AnyToDoGroupListPresenter & AnyToDoGroupListInteractorOutput = ToDoGroupListPresenter()
+        let interactor: AnyToDoGroupListInteractorInput = ToDoGroupListInteractor()
+        let localDataManager: AnyToDoGroupListLocalDataManager = ToDoGroupListCoreDataManager()
+        let wireframe: AnyToDoGroupListWireframe = ToDoGroupListWireframe()
+        
+        view.presenter = presenter
+        
+        presenter.view = view
+        presenter.wireframe = wireframe
+        presenter.interactor = interactor
+        
+        interactor.presenter = presenter
+        interactor.localDataManager = localDataManager
+        
+        return UINavigationController(rootViewController: view)
     }
     
     public func presentToDoItemList(for group: ToDoGroupModel) {
