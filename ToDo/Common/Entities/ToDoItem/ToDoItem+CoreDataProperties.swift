@@ -2,7 +2,7 @@
 //  ToDoItem+CoreDataProperties.swift
 //  ToDo
 //
-//  Created by Daniil Kostitsin on 15.10.2021.
+//  Created by Daniil Kostitsin on 17.10.2021.
 //
 //
 

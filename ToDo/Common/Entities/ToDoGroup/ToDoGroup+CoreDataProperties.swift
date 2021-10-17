@@ -2,13 +2,13 @@
 //  ToDoGroup+CoreDataProperties.swift
 //  ToDo
 //
-//  Created by Daniil Kostitsin on 15.10.2021.
+//  Created by Daniil Kostitsin on 17.10.2021.
 //
 //
 
-import Foundation
-import CoreData
 import UIKit
+import CoreData
+
 
 extension ToDoGroup {
 
@@ -19,6 +19,7 @@ extension ToDoGroup {
     @NSManaged public var color: UIColor?
     @NSManaged public var id: UUID?
     @NSManaged public var name: String?
+    @NSManaged public var dateAdded: Date?
     @NSManaged public var items: NSSet?
 
 }
