@@ -5,7 +5,7 @@
 //  Created by Daniil Kostitsin on 16.10.2021.
 //
 
-import UIKit
+import Foundation
 
 public class ToDoGroupListInteractor: AnyToDoGroupListInteractorInput {
     public var localDataManager: AnyToDoGroupListLocalDataManager?
