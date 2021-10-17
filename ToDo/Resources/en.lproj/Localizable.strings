@@ -7,3 +7,5 @@
 */
 
 "group_list_title" = "Lists";
+"edit_action_accessibility_label" = "Edit";
+"delete_action_accessibility_label" = "Delete";

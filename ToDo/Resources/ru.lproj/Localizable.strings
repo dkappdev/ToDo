@@ -7,3 +7,5 @@
 */
 
 "group_list_title" = "Списки";
+"edit_action_accessibility_label" = "Редактировать";
+"delete_action_accessibility_label" = "Удалить";

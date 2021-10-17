@@ -42,6 +42,12 @@ public class ToDoGroupListView: UIViewController {
     @objc private func addGroup() {
         presenter?.addGroup()
     }
+    
+    private func deleteGroup(at indexPath: IndexPath) {
+        let group = groupList.remove(at: indexPath.row)
+        presenter?.deleteGroup(group)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
 }
 
 // MARK: - Module methods
@@ -84,9 +90,7 @@ extension ToDoGroupListView: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let group = groupList.remove(at: indexPath.row)
-            presenter?.deleteGroup(group)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            deleteGroup(at: indexPath)
         }
     }
 }
@@ -96,6 +100,26 @@ extension ToDoGroupListView: UITableViewDataSource {
 extension ToDoGroupListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         .delete
+    }
+    
+    public func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: nil) { action, view, completionHandler in
+            self.deleteGroup(at: indexPath)
+            completionHandler(true)
+        }
+        deleteAction.image = UIImage(systemName: "trash")
+        deleteAction.accessibilityLabel = NSLocalizedString("delete_action_accessibility_label", comment: "")
+        
+        let editAction = UIContextualAction(style: .normal, title: nil) { action, view, completionHandler in
+            let group = self.groupList[indexPath.row]
+            self.presenter?.editGroup(group)
+            completionHandler(true)
+        }
+        editAction.image = UIImage(systemName: "slider.horizontal.3")
+        editAction.accessibilityLabel = NSLocalizedString("edit_action_accessibility_label", comment: "")
+        editAction.backgroundColor = .systemBlue
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
     }
 }
 
