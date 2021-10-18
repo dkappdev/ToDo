@@ -49,6 +49,6 @@ public protocol AnyToDoItemListInteractorOutput: AnyObject {
 }
 
 public protocol AnyToDoItemListLocalDataManager: AnyObject {
-    func retrieveToDoItemList() -> [ToDoItemModel]
-    func removeToDoItem(_ item: ToDoItemModel, from group: ToDoGroupModel)
+    func retrieveToDoItemList(for group: ToDoGroupModel) -> [ToDoItemModel]
+    func removeToDoItem(_ item: ToDoItemModel)
 }
