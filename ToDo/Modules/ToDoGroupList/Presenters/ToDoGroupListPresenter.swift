@@ -8,7 +8,7 @@
 import Foundation
 
 public class ToDoGroupListPresenter: AnyToDoGroupListPresenter {
-    public var view: AnyToDoGroupListView?
+    public weak var view: AnyToDoGroupListView?
     public var interactor: AnyToDoGroupListInteractorInput?
     public var wireframe: AnyToDoGroupListWireframe?
     
