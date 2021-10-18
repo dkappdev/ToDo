@@ -11,7 +11,7 @@ import UIKit
 public protocol AnyToDoItemListView: AnyObject {
     var presenter: AnyToDoItemListPresenter? { get set }
     
-    func showToDoItems(_ items: [ToDoItemModel])
+    func showToDoItemsForGroup(_ group: ToDoGroupModel)
 }
 
 // Presenter -> Wireframe
