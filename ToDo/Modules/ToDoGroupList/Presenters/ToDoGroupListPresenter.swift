@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class ToDoGroupListPresenter: AnyToDoGroupListPresenter {
     public weak var view: AnyToDoGroupListView?
@@ -25,7 +26,7 @@ public class ToDoGroupListPresenter: AnyToDoGroupListPresenter {
     }
     
     public func showToDoItemList(for group: ToDoGroupModel) {
-        wireframe?.presentToDoItemList(for: group)
+        wireframe?.presentToDoItemList(for: group, from: view as? UIViewController ?? UIViewController())
     }
     
     public func addGroup() {

@@ -15,7 +15,7 @@ public class ToDoGroup: NSManagedObject {
     /// Creates an instance of `ToDoGroupModel` from Core Data class
     /// - Returns: Representation of a `ToDoGroup` as a `ToDoGroupModel`
     public func model() -> ToDoGroupModel? {
-        let sortDescriptor = NSSortDescriptor(keyPath: \ToDoGroup.name, ascending: true)
+        let sortDescriptor = NSSortDescriptor(keyPath: \ToDoItem.dateAdded, ascending: true)
         let items = items?.sortedArray(using: [sortDescriptor]) as? [ToDoItem]
         
         guard let items = items else { return nil }

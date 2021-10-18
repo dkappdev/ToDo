@@ -37,6 +37,18 @@ public class ToDoGroupListView: UIViewController {
         presenter?.viewDidLoad()
     }
     
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.tintColor = .systemBlue
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.label]
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.label]
+        
+        tableView.indexPathsForVisibleRows?.forEach{ indexPath in
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+    
     // MARK: - Responding to user actions
     
     @objc private func addGroup() {
@@ -87,21 +99,11 @@ extension ToDoGroupListView: UITableViewDataSource {
         
         return cell
     }
-    
-    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            deleteGroup(at: indexPath)
-        }
-    }
 }
 
 // MARK: - Table view delegate
 
 extension ToDoGroupListView: UITableViewDelegate {
-    public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        .delete
-    }
-    
     public func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: nil) { action, view, completionHandler in
             self.deleteGroup(at: indexPath)
@@ -120,6 +122,11 @@ extension ToDoGroupListView: UITableViewDelegate {
         editAction.backgroundColor = .systemBlue
         
         return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
+    }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let group = groupList[indexPath.row]
+        presenter?.showToDoItemList(for: group)
     }
 }
 

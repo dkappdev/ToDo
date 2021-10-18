@@ -16,7 +16,7 @@ public protocol AnyToDoItemListView: AnyObject {
 
 // Presenter -> Wireframe
 public protocol AnyToDoItemListWireframe: AnyObject {
-    static func createToDoItemListModule() -> UIViewController
+    static func createToDoItemListModule(for group: ToDoGroupModel) -> UIViewController
     
     func presentAddItemScreen()
     func presentEditItemScreen(for item: ToDoItemModel)
@@ -39,16 +39,16 @@ public protocol AnyToDoItemListInteractorInput: AnyObject {
     var presenter: AnyToDoItemListInteractorOutput? { get set }
     var localDataManager: AnyToDoItemListLocalDataManager? { get set }
     
-    func retrieveToDoItemList(for group: ToDoGroupModel)
-    func removeToDoItem(_ item: ToDoItemModel, from group: ToDoGroupModel)
+    func requestUpdatedToDoGroup(_ group: ToDoGroupModel)
+    func removeToDoItem(_ item: ToDoItemModel)
 }
 
 // Interactor -> Presenter
 public protocol AnyToDoItemListInteractorOutput: AnyObject {
-    func didRetrieveToDoItemList(_ itemList: [ToDoItemModel])
+    func didReceiveNewToDoGroup(_ group: ToDoGroupModel)
 }
 
 public protocol AnyToDoItemListLocalDataManager: AnyObject {
-    func retrieveToDoItemList(for group: ToDoGroupModel) -> [ToDoItemModel]
+    func updateToDoGroup(_ group: ToDoGroupModel) -> ToDoGroupModel
     func removeToDoItem(_ item: ToDoItemModel)
 }

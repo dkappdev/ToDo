@@ -9,9 +9,10 @@ import Foundation
 import CoreData
 
 public class ToDoItemListCoreDataManager: AnyToDoItemListLocalDataManager {
+    
     private let persistenceController = CoreDataPersistenceController.shared
     
-    public func retrieveToDoItemList(for group: ToDoGroupModel) -> [ToDoItemModel] {
+    public func updateToDoGroup(_ group: ToDoGroupModel) -> ToDoGroupModel {
         // Fetching group
         let fetchRequest = ToDoGroup.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id == %@", argumentArray: [group.id as Any])
@@ -20,10 +21,9 @@ public class ToDoItemListCoreDataManager: AnyToDoItemListLocalDataManager {
         // Making sure only one group was fetched, then converting the group to a group model
         guard groupObjects?.count == 1,
               let groupObject = groupObjects?.first,
-              let group = groupObject.model() else { return [] }
+              let group = groupObject.model() else { return group }
         
-        // Sorting the items by date added
-        return group.items?.sorted { $0.dateAdded ?? Date() > $1.dateAdded ?? Date() } ?? []
+        return group
     }
     
     public func removeToDoItem(_ item: ToDoItemModel) {

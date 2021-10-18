@@ -27,8 +27,13 @@ public class ToDoGroupListWireframe: AnyToDoGroupListWireframe {
         return UINavigationController(rootViewController: view)
     }
     
-    public func presentToDoItemList(for group: ToDoGroupModel) {
-        assertionFailure("presentToDoItemList(for:) has not yet been implemented")
+    public func presentToDoItemList(for group: ToDoGroupModel, from view: UIViewController) {
+        let toDoItemListModule = ToDoItemListWireframe.createToDoItemListModule(for: group)
+        if let navigationController = view.navigationController {
+            navigationController.pushViewController(toDoItemListModule, animated: true)
+        } else {
+            view.present(toDoItemListModule, animated: true, completion: nil)
+        }
     }
     
     public func presentAddGroupScreen() {
