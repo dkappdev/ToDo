@@ -12,13 +12,6 @@ public class ToDoGroupListCoreDataManager: AnyToDoGroupListLocalDataManager {
     private let persistenceController = CoreDataPersistenceController.shared
     
     public func retrieveToDoGroupList() -> [ToDoGroupModel] {
-        let group = ToDoGroup(context: persistenceController.context)
-        group.id = UUID()
-        group.dateAdded = Date()
-        group.color = .systemRed
-        group.name = "Group 1"
-        persistenceController.saveContext()
-        
         // Retrieving Core Data class instances of to-do groups
         let fetchRequest = ToDoGroup.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \ToDoGroup.name, ascending: true), NSSortDescriptor(keyPath: \ToDoGroup.dateAdded, ascending: true)]
