@@ -96,7 +96,7 @@ public class AddEditGroupView: UIViewController {
         ])
     }
     
-    func setImageViewColor(_ color: UIColor) {
+    private func setImageViewColor(_ color: UIColor) {
         let config = UIImage.SymbolConfiguration(paletteColors: [.white, color])
         groupImageView.image = UIImage(systemName: "list.bullet.circle.fill")?.applyingSymbolConfiguration(config)
         groupImageView.layer.shadowColor = color.cgColor
