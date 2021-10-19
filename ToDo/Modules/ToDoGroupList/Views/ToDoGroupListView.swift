@@ -40,9 +40,7 @@ public class ToDoGroupListView: UIViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.navigationBar.tintColor = .systemBlue
-        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.label]
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.label]
+        setNavigationBarColor(UIColor.label)
         
         tableView.indexPathsForVisibleRows?.forEach{ indexPath in
             tableView.deselectRow(at: indexPath, animated: true)
@@ -59,6 +57,14 @@ public class ToDoGroupListView: UIViewController {
         let group = groupList.remove(at: indexPath.row)
         presenter?.deleteGroup(group)
         tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+    
+    // MARK: - Utility functions
+
+    private func setNavigationBarColor(_ color: UIColor?) {
+        guard let color = color else { return }
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: color]
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: color]
     }
 }
 
