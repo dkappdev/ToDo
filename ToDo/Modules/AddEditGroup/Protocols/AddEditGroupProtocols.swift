@@ -17,7 +17,7 @@ public protocol AnyAddEditGroupView: AnyObject {
 
 // Presenter -> Wireframe
 public protocol AnyAddEditGroupWireframe: AnyObject {
-    static func createAddEditGroupModule() -> UIViewController
+    static func createAddEditGroupModule(with delegate: AddEditGroupModuleDelegate) -> UIViewController
     
     func dismissAddEditScreen(using delegate: AddEditGroupModuleDelegate)
 }
