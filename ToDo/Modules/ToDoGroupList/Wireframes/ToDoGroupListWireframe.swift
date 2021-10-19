@@ -36,11 +36,15 @@ public class ToDoGroupListWireframe: AnyToDoGroupListWireframe {
         }
     }
     
-    public func presentAddGroupScreen() {
+    public func presentAddGroupModule(withDelegate delegate: AddEditGroupModuleDelegate) {
         assertionFailure("presentAddGroupScreen() has not yet been implemented")
     }
     
-    public func presentEditGroupScreen(for group: ToDoGroupModel) {
+    public func presentEditGroupModule(for group: ToDoGroupModel, withDelegate delegate: AddEditGroupModuleDelegate) {
         assertionFailure("presentEditGroupScreen(for:) has not yet been implemented")
+    }
+    
+    public func dismissAddEditModule(parent: UIViewController) {
+        parent.dismiss(animated: true, completion: nil)
     }
 }
