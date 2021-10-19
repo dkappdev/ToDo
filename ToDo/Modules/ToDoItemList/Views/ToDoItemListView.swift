@@ -88,5 +88,14 @@ extension ToDoItemListView: UITableViewDataSource {
 // MARK: - Table view delegate
 
 extension ToDoItemListView: UITableViewDelegate {
-    
+    public func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: nil) { action, view, completionHandler in
+            self.deleteItem(at: indexPath)
+            completionHandler(true)
+        }
+        deleteAction.image = UIImage(systemName: "trash")
+        deleteAction.accessibilityLabel = NSLocalizedString("delete_action_accessibility_label", comment: "")
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
 }
