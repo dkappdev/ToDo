@@ -12,7 +12,7 @@ public class ToDoGroupListView: UIViewController {
     private static let toDoGroupCellReuseIdentifier = "ToDoGroupCell"
     private var tableView: UITableView!
     
-    // VIPER properites
+    // VIPER properties
     public var presenter: AnyToDoGroupListPresenter?
     private var groupList: [ToDoGroupModel] = []
     
