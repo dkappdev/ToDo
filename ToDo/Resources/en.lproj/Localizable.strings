@@ -9,3 +9,6 @@
 "group_list_title" = "Lists";
 "edit_action_accessibility_label" = "Edit";
 "delete_action_accessibility_label" = "Delete";
+"edit_list_title" = "Edit List";
+"add_list_title" = "Add List";
+"list_name_placeholder" = "List Name";

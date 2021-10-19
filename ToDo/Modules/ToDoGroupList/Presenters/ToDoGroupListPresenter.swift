@@ -18,7 +18,7 @@ public class ToDoGroupListPresenter: AnyToDoGroupListPresenter {
     }
     
     public func editGroup(_ group: ToDoGroupModel) {
-        wireframe?.presentEditGroupModule(for: group, withDelegate: self)
+        wireframe?.presentEditGroupModule(for: group, withDelegate: self, from: view as? UIViewController ?? UIViewController())
     }
     
     public func deleteGroup(_ group: ToDoGroupModel) {
@@ -30,7 +30,7 @@ public class ToDoGroupListPresenter: AnyToDoGroupListPresenter {
     }
     
     public func addGroup() {
-        wireframe?.presentAddGroupModule(withDelegate: self)
+        wireframe?.presentAddGroupModule(withDelegate: self, from: view as? UIViewController ?? UIViewController())
     }
 }
 
