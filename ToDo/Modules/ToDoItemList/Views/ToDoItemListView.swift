@@ -8,11 +8,16 @@
 import UIKit
 
 public class ToDoItemListView: UIViewController {
+    // Table view properties
     private static let toDoItemCellReuseIdentifier = "ToDoItemCell"
     private var tableView: UITableView!
     
+    // VIPER properties
     public var presenter: AnyToDoItemListPresenter?
     private var itemList: [ToDoItemModel] = []
+    
+    /// Cached group color
+    private var groupColor: UIColor?
     
     // MARK: - View life cycle
     
@@ -35,16 +40,34 @@ public class ToDoItemListView: UIViewController {
         presenter?.viewDidLoad()
     }
     
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNavigationBarColor(groupColor)
+    }
+    
     // MARK: - Responding to user actions
     
+    /// Creates a new to-do item
     @objc private func addItem() {
         presenter?.addItem()
     }
     
+    /// Delete to-do item at specified location
+    /// - Parameter indexPath: item location
     private func deleteItem(at indexPath: IndexPath) {
         let item = itemList.remove(at: indexPath.row)
         presenter?.deleteItem(item)
         tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+    
+    // MARK: - Utility functions
+    
+    /// Sets navigation bar color
+    /// - Parameter color: new navigation bar color. If `color` is `nil`, no changes are made to the status bar
+    private func setNavigationBarColor(_ color: UIColor?) {
+        guard let color = color else { return }
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: color as Any]
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: color as Any]
     }
 }
 
@@ -52,11 +75,14 @@ public class ToDoItemListView: UIViewController {
 
 extension ToDoItemListView: AnyToDoItemListView {
     public func showToDoItemsForGroup(_ group: ToDoGroupModel) {
-        navigationController?.navigationBar.tintColor = group.color
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: group.color as Any]
-        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: group.color as Any]
+        // Remembering group color
+        groupColor = group.color
+        
+        // Setting up navigation bar
+        setNavigationBarColor(groupColor)
         navigationItem.title = group.name
         
+        // Displaying items
         itemList = group.items ?? []
         tableView.reloadData()
     }
