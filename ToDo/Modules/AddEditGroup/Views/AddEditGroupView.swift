@@ -70,7 +70,7 @@ public class AddEditGroupView: UIViewController {
             imageView.widthAnchor.constraint(equalToConstant: 80),
         ])
         
-        imageView.layer.shadowOpacity = 1
+        imageView.layer.shadowOpacity = 0.7
         imageView.layer.masksToBounds = false
         imageView.layer.shadowOffset = CGSize(width: 0, height: 0)
         imageView.layer.shadowRadius = 12
