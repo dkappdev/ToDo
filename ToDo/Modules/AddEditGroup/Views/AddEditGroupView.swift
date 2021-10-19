@@ -38,6 +38,7 @@ public class AddEditGroupView: UIViewController {
         tableView = UITableView(frame: view.frame, style: .insetGrouped)
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.allowsSelection = false
         view = tableView
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: Self.imageAndTextFieldCellReuseIdentifier)
@@ -80,7 +81,6 @@ public class AddEditGroupView: UIViewController {
         textField.borderStyle = .roundedRect
         textField.textAlignment = .center
         textField.font = .preferredFont(forTextStyle: .headline)
-        textField.textColor = .secondaryLabel
         textField.backgroundColor = .systemGroupedBackground
         textField.placeholder = NSLocalizedString("list_name_placeholder", comment: "")
         nameTextField = textField
