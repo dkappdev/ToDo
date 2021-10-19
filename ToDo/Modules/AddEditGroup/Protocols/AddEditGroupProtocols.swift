@@ -19,7 +19,7 @@ public protocol AnyAddEditGroupView: AnyObject {
 public protocol AnyAddEditGroupWireframe: AnyObject {
     static func createAddEditGroupModule() -> UIViewController
     
-    func dismissAddEditScreen()
+    func dismissAddEditScreen(using delegate: AddEditGroupModuleDelegate)
 }
 
 // View -> Presenter
@@ -27,6 +27,7 @@ public protocol AnyAddEditGroupPresenter: AnyObject {
     var view: AnyAddEditGroupView? { get set }
     var interactor: AnyAddEditGroupInteractorInput? { get set }
     var wireframe: AnyAddEditGroupWireframe? { get set }
+    var delegate: AddEditGroupModuleDelegate? { get set }
     
     func viewDidLoad()
     func cancel()
@@ -55,3 +56,6 @@ public protocol AnyAddEditGroupLocalDataManager: AnyObject {
     func retrieveColorOptions() -> [UIColor]
 }
 
+public protocol AddEditGroupModuleDelegate: AnyObject {
+    func dismissAddEditScreen()
+}
