@@ -42,7 +42,7 @@ public class ToDoItemListView: UIViewController {
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarColor(groupColor)
+        setNavigationBarTextColor(groupColor)
     }
     
     // MARK: - Responding to user actions
@@ -64,7 +64,7 @@ public class ToDoItemListView: UIViewController {
     
     /// Sets navigation bar color
     /// - Parameter color: new navigation bar color. If `color` is `nil`, no changes are made to the status bar
-    private func setNavigationBarColor(_ color: UIColor?) {
+    private func setNavigationBarTextColor(_ color: UIColor?) {
         guard let color = color else { return }
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: color as Any]
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: color as Any]
@@ -74,12 +74,14 @@ public class ToDoItemListView: UIViewController {
 // MARK: - Module methods
 
 extension ToDoItemListView: AnyToDoItemListView {
+    /// Called when updated group model has been received. This method displays item list from the new group model
+    /// - Parameter group: new group model
     public func showToDoItemsForGroup(_ group: ToDoGroupModel) {
         // Remembering group color
         groupColor = group.color
         
         // Setting up navigation bar
-        setNavigationBarColor(groupColor)
+        setNavigationBarTextColor(groupColor)
         navigationItem.title = group.name
         
         // Displaying items

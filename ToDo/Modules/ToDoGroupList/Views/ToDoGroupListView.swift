@@ -12,6 +12,7 @@ public class ToDoGroupListView: UIViewController {
     private static let toDoGroupCellReuseIdentifier = "ToDoGroupCell"
     private var tableView: UITableView!
     
+    // VIPER properites
     public var presenter: AnyToDoGroupListPresenter?
     private var groupList: [ToDoGroupModel] = []
     
@@ -40,7 +41,7 @@ public class ToDoGroupListView: UIViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setNavigationBarColor(UIColor.label)
+        setNavigationBarTextColor(UIColor.label)
         
         tableView.indexPathsForVisibleRows?.forEach{ indexPath in
             tableView.deselectRow(at: indexPath, animated: true)
@@ -49,10 +50,13 @@ public class ToDoGroupListView: UIViewController {
     
     // MARK: - Responding to user actions
     
+    /// Adds a new to-do group
     @objc private func addGroup() {
         presenter?.addGroup()
     }
     
+    /// Delete to-do group at specified location
+    /// - Parameter indexPath: group location
     private func deleteGroup(at indexPath: IndexPath) {
         let group = groupList.remove(at: indexPath.row)
         presenter?.deleteGroup(group)
@@ -60,8 +64,10 @@ public class ToDoGroupListView: UIViewController {
     }
     
     // MARK: - Utility functions
-
-    private func setNavigationBarColor(_ color: UIColor?) {
+    
+    /// Sets up navigation bar
+    /// - Parameter color: new navigation bar color
+    private func setNavigationBarTextColor(_ color: UIColor?) {
         guard let color = color else { return }
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: color]
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: color]
@@ -72,6 +78,8 @@ public class ToDoGroupListView: UIViewController {
 
 extension ToDoGroupListView: AnyToDoGroupListView {
     
+    /// Called when group models have been successfully received. This method display to-do group list
+    /// - Parameter groups: new to-do group
     public func showToDoGroups(_ groups: [ToDoGroupModel]) {
         groupList = groups
         tableView.reloadData()
