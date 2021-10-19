@@ -30,7 +30,8 @@ public protocol AnyAddEditGroupPresenter: AnyObject {
     
     func viewDidLoad()
     func cancel()
-    func saveGroup(_ group: ToDoGroupModel)
+    func updateGroup(_ group: ToDoGroupModel)
+    func createNewGroup(_ group: ToDoGroupModel)
 }
 
 // Presenter -> Interactor
@@ -38,7 +39,8 @@ public protocol AnyAddEditGroupInteractorInput: AnyObject {
     var presenter: AnyAddEditGroupInteractorOutput? { get set }
     var localDataManager: AnyAddEditGroupLocalDataManager? { get set }
     
-    func saveGroup(_ group: ToDoGroupModel)
+    func updateGroup(_ group: ToDoGroupModel)
+    func createNewGroup(_ group: ToDoGroupModel)
     func retrieveColorOptions() -> [UIColor]
 }
 
@@ -48,7 +50,8 @@ public protocol AnyAddEditGroupInteractorOutput: AnyObject {
 }
 
 public protocol AnyAddEditGroupLocalDataManager: AnyObject {
-    func saveGroup(_ group: ToDoGroupModel)
+    func updateGroup(_ group: ToDoGroupModel)
+    func createNewGroup(_ group: ToDoGroupModel)
     func retrieveColorOptions() -> [UIColor]
 }
 
