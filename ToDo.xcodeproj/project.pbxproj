@@ -21,6 +21,8 @@
 		E21931FC271D72DD00479D46 /* ToDoItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21931FB271D72DD00479D46 /* ToDoItemListView.swift */; };
 		E22C30DF271D793D0068C74F /* ToDoItemListWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22C30DE271D793D0068C74F /* ToDoItemListWireframe.swift */; };
 		E24BB2D3271EEBEB008410D3 /* AddEditGroupCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24BB2D2271EEBEB008410D3 /* AddEditGroupCoreDataManager.swift */; };
+		E24BB2D6271F3985008410D3 /* AddEditGroupInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24BB2D5271F3985008410D3 /* AddEditGroupInteractor.swift */; };
+		E24BB2D9271F39D6008410D3 /* AddEditGroupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24BB2D8271F39D6008410D3 /* AddEditGroupPresenter.swift */; };
 		E2622D172715DE30006AA64E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2622D162715DE30006AA64E /* AppDelegate.swift */; };
 		E2622D192715DE30006AA64E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2622D182715DE30006AA64E /* SceneDelegate.swift */; };
 		E2622D212715DE30006AA64E /* ToDo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2622D1F2715DE30006AA64E /* ToDo.xcdatamodeld */; };
@@ -53,6 +55,8 @@
 		E21931FB271D72DD00479D46 /* ToDoItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemListView.swift; sourceTree = "<group>"; };
 		E22C30DE271D793D0068C74F /* ToDoItemListWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemListWireframe.swift; sourceTree = "<group>"; };
 		E24BB2D2271EEBEB008410D3 /* AddEditGroupCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditGroupCoreDataManager.swift; sourceTree = "<group>"; };
+		E24BB2D5271F3985008410D3 /* AddEditGroupInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditGroupInteractor.swift; sourceTree = "<group>"; };
+		E24BB2D8271F39D6008410D3 /* AddEditGroupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditGroupPresenter.swift; sourceTree = "<group>"; };
 		E2622D132715DE30006AA64E /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2622D162715DE30006AA64E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2622D182715DE30006AA64E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -345,6 +349,7 @@
 		E2F40401271EC5A000AE5F34 /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
+				E24BB2D8271F39D6008410D3 /* AddEditGroupPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -360,6 +365,7 @@
 		E2F40403271EC5A900AE5F34 /* Interactors */ = {
 			isa = PBXGroup;
 			children = (
+				E24BB2D5271F3985008410D3 /* AddEditGroupInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -440,6 +446,8 @@
 				E22C30DF271D793D0068C74F /* ToDoItemListWireframe.swift in Sources */,
 				E2C79311271829F400565801 /* ToDoItemModel.swift in Sources */,
 				E20D2EB72719C7A5008097A0 /* ToDoGroupListCoreDataManager.swift in Sources */,
+				E24BB2D9271F39D6008410D3 /* AddEditGroupPresenter.swift in Sources */,
+				E24BB2D6271F3985008410D3 /* AddEditGroupInteractor.swift in Sources */,
 				E20D2EC2271B63DB008097A0 /* ToDoGroupListWireframe.swift in Sources */,
 				E24BB2D3271EEBEB008410D3 /* AddEditGroupCoreDataManager.swift in Sources */,
 				E20D2EBC271AEB10008097A0 /* CoreDataPersistenceController.swift in Sources */,

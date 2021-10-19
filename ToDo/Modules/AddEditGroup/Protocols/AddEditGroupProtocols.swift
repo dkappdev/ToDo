@@ -31,8 +31,7 @@ public protocol AnyAddEditGroupPresenter: AnyObject {
     
     func viewDidLoad()
     func cancel()
-    func updateGroup(_ group: ToDoGroupModel)
-    func createNewGroup(_ group: ToDoGroupModel)
+    func saveGroup(name: String, color: UIColor)
 }
 
 // Presenter -> Interactor
