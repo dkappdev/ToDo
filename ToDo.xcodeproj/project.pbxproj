@@ -30,6 +30,7 @@
 		E2622D212715DE30006AA64E /* ToDo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2622D1F2715DE30006AA64E /* ToDo.xcdatamodeld */; };
 		E2622D232715DE31006AA64E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2622D222715DE31006AA64E /* Assets.xcassets */; };
 		E2622D262715DE31006AA64E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2622D242715DE31006AA64E /* LaunchScreen.storyboard */; };
+		E283C1202720A47000276BA3 /* AddEditItemProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283C11F2720A47000276BA3 /* AddEditItemProtocols.swift */; };
 		E287473F271D84300084D189 /* ToDoGroup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E287473B271D84300084D189 /* ToDoGroup+CoreDataProperties.swift */; };
 		E2874741271D84300084D189 /* ToDoItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E287473D271D84300084D189 /* ToDoItem+CoreDataProperties.swift */; };
 		E29E38402718C4E90093F0E0 /* ToDoGroupListProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29E383F2718C4E90093F0E0 /* ToDoGroupListProtocols.swift */; };
@@ -68,6 +69,7 @@
 		E2622D222715DE31006AA64E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E2622D252715DE31006AA64E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E2622D272715DE31006AA64E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E283C11F2720A47000276BA3 /* AddEditItemProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditItemProtocols.swift; sourceTree = "<group>"; };
 		E287473B271D84300084D189 /* ToDoGroup+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDoGroup+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E287473D271D84300084D189 /* ToDoItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDoItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E29E383F2718C4E90093F0E0 /* ToDoGroupListProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoGroupListProtocols.swift; sourceTree = "<group>"; };
@@ -226,6 +228,62 @@
 			path = AppDelegate;
 			sourceTree = "<group>";
 		};
+		E283C1172720A42E00276BA3 /* AddEditItem */ = {
+			isa = PBXGroup;
+			children = (
+				E283C11D2720A45B00276BA3 /* Interactors */,
+				E283C11C2720A45600276BA3 /* LocalDataManagers */,
+				E283C11B2720A44C00276BA3 /* Presenters */,
+				E283C11A2720A43B00276BA3 /* Protocols */,
+				E283C1192720A43800276BA3 /* Views */,
+				E283C1182720A43300276BA3 /* Wireframes */,
+			);
+			path = AddEditItem;
+			sourceTree = "<group>";
+		};
+		E283C1182720A43300276BA3 /* Wireframes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Wireframes;
+			sourceTree = "<group>";
+		};
+		E283C1192720A43800276BA3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E283C11A2720A43B00276BA3 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E283C11F2720A47000276BA3 /* AddEditItemProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		E283C11B2720A44C00276BA3 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		E283C11C2720A45600276BA3 /* LocalDataManagers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LocalDataManagers;
+			sourceTree = "<group>";
+		};
+		E283C11D2720A45B00276BA3 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
 		E29E383D2718BC910093F0E0 /* ToDoGroupList */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +328,7 @@
 		E2A6252B27161E3A003B33E6 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				E283C1172720A42E00276BA3 /* AddEditItem */,
 				E2F403FD271EC58600AE5F34 /* AddEditGroup */,
 				E21931E9271C903000479D46 /* ToDoItemList */,
 				E29E383D2718BC910093F0E0 /* ToDoGroupList */,
@@ -457,6 +516,7 @@
 				E24BB2D6271F3985008410D3 /* AddEditGroupInteractor.swift in Sources */,
 				E24BB2DB271F3CB0008410D3 /* AddEditGroupView.swift in Sources */,
 				E20D2EC2271B63DB008097A0 /* ToDoGroupListWireframe.swift in Sources */,
+				E283C1202720A47000276BA3 /* AddEditItemProtocols.swift in Sources */,
 				E24BB2D3271EEBEB008410D3 /* AddEditGroupCoreDataManager.swift in Sources */,
 				E20D2EBC271AEB10008097A0 /* CoreDataPersistenceController.swift in Sources */,
 				E29E38402718C4E90093F0E0 /* ToDoGroupListProtocols.swift in Sources */,
