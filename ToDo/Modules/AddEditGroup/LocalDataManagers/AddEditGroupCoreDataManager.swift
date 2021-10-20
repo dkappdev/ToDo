@@ -49,6 +49,6 @@ public class AddEditGroupCoreDataManager: AnyAddEditGroupLocalDataManager {
     }
     
     public func retrieveColorOptions() -> [UIColor] {
-        [.systemRed, .systemOrange, .systemYellow, .systemGreen, .systemBlue, .systemPurple, .systemPink]
+        [.systemRed, .systemOrange, .systemYellow, .systemGreen, .systemBlue, .systemPurple, .systemPink, .systemMint, .systemCyan, .systemIndigo]
     }
 }

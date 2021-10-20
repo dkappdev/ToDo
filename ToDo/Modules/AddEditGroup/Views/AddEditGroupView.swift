@@ -29,6 +29,9 @@ public class AddEditGroupView: UIViewController {
     /// The color that user has selected
     private var selectedColor: UIColor?
     
+    /// Last selected color picker view. This view is stored to restore its appearance after deselection.
+    private var lastSelectedView: UIImageView?
+    
     // MARK: - View life cycle
     
     public override func viewDidLoad() {
@@ -97,13 +100,118 @@ public class AddEditGroupView: UIViewController {
     }
     
     private func setupColorPicker() {
+        let verticalSpacing: CGFloat = 16
+        let horizontalSpacing: CGFloat = 16
+        let imageSize: CGFloat = 40
         
+        // Setting up vertical stack
+        let verticalStackView = UIStackView()
+        verticalStackView.axis = .vertical
+        verticalStackView.spacing = verticalSpacing
+        
+        colorPickerCell.contentView.addSubview(verticalStackView)
+        verticalStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            verticalStackView.topAnchor.constraint(equalTo: colorPickerCell.contentView.topAnchor, constant: 16),
+            colorPickerCell.contentView.bottomAnchor.constraint(equalTo: verticalStackView.bottomAnchor, constant: 16),
+            verticalStackView.leadingAnchor.constraint(equalTo: colorPickerCell.contentView.leadingAnchor, constant: 16),
+            colorPickerCell.contentView.trailingAnchor.constraint(equalTo: verticalStackView.trailingAnchor, constant: 16)
+        ])
+
+        // Calculating number of columns and number fo rows
+        
+        let numberOfColumns = traitCollection.horizontalSizeClass == .regular ? 8 : 5
+        
+        var numberOfRows = colorOptions.count / numberOfColumns
+        if colorOptions.count > numberOfRows * numberOfColumns {
+            numberOfRows += 1
+        }
+        
+        // Adding color options
+        for (index, colorOption) in colorOptions.enumerated() {
+            // Creating a new horizontal stack view for each new row
+            if index % numberOfColumns == 0 {
+                let horizontalStack = UIStackView()
+                horizontalStack.axis = .horizontal
+                horizontalStack.spacing = horizontalSpacing
+                horizontalStack.alignment = .center
+                horizontalStack.distribution = .fillEqually
+                verticalStackView.addArrangedSubview(horizontalStack)
+            }
+            
+            guard let stack = verticalStackView.arrangedSubviews.last as? UIStackView else { return }
+            
+            // Setting up image view
+            let imageView = UIImageView()
+            imageView.contentMode = .scaleAspectFit
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            
+            NSLayoutConstraint.activate([
+                imageView.heightAnchor.constraint(equalToConstant: imageSize)
+            ])
+            
+            setupImagePickerView(imageView, color: colorOption, isSelected: colorOption == selectedColor)
+            
+            if colorOption == selectedColor {
+                lastSelectedView = imageView
+            }
+            
+            imageView.tintColor = colorOption
+            let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(updateColor(_:)))
+            imageView.isUserInteractionEnabled = true
+            imageView.addGestureRecognizer(gestureRecognizer)
+            
+            stack.addArrangedSubview(imageView)
+        }
+        
+        // Adding spacers
+        
+        for _ in 0..<(numberOfRows * numberOfColumns - colorOptions.count) {
+            guard let stack = verticalStackView.arrangedSubviews.last as? UIStackView else { return }
+
+            let imageView = UIImageView()
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            
+            NSLayoutConstraint.activate([
+                imageView.heightAnchor.constraint(equalToConstant: imageSize)
+            ])
+            
+            stack.addArrangedSubview(imageView)
+        }
+    }
+    
+    private func setupImagePickerView(_ view: UIImageView?, color: UIColor, isSelected: Bool) {
+        guard let view = view else { return }
+        
+        let paletteColors = isSelected ? [.white, color] : [color]
+        let symbolConfiguration = UIImage.SymbolConfiguration(paletteColors: paletteColors)
+        if isSelected {
+            view.image = UIImage(systemName: "checkmark.circle.fill")?.applyingSymbolConfiguration(symbolConfiguration)
+        } else {
+            view.image = UIImage(systemName: "circle.fill")?.applyingSymbolConfiguration(symbolConfiguration)
+        }
     }
     
     private func setImageViewColor(_ color: UIColor) {
         let config = UIImage.SymbolConfiguration(paletteColors: [.white, color])
         groupImageView.image = UIImage(systemName: "list.bullet.circle.fill")?.applyingSymbolConfiguration(config)
         groupImageView.layer.shadowColor = color.cgColor
+    }
+    
+    // MARK: - Responding to user actions
+    
+    @objc private func updateColor(_ gestureRecognizer: UITapGestureRecognizer) {
+        guard let view = gestureRecognizer.view as? UIImageView,
+              let tintColor = view.tintColor else { return }
+              
+        setupImagePickerView(lastSelectedView, color: selectedColor ?? .systemBlue, isSelected: false)
+        
+        selectedColor = tintColor
+        setImageViewColor(tintColor)
+        setupImagePickerView(view, color: tintColor, isSelected: true)
+        
+        lastSelectedView = view
     }
 }
 
