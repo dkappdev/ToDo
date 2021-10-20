@@ -104,10 +104,8 @@ extension ToDoGroupListView: UITableViewDataSource {
         
         var content = cell.defaultContentConfiguration()
         content.text = group.name
-        var image = UIImage(systemName: "list.bullet.circle.fill")
-        if let color = group.color {
-            image = image?.withTintColor(color, renderingMode: .alwaysOriginal)
-        }
+        let imageConfig = UIImage.SymbolConfiguration(paletteColors: [.white, group.color ?? .systemBlue])
+        let image = UIImage(systemName: "list.bullet.circle.fill")?.applyingSymbolConfiguration(imageConfig)
         content.image = image
         cell.contentConfiguration = content
         
