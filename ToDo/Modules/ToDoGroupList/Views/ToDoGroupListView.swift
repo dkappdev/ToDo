@@ -27,6 +27,8 @@ public class ToDoGroupListView: UIViewController {
         tableView.delegate = self
         view = tableView
         
+        tableView.cellLayoutMarginsFollowReadableWidth = true
+        
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: Self.toDoGroupCellReuseIdentifier)
         
         // Setting up navigation item

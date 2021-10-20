@@ -49,6 +49,8 @@ public class AddEditGroupView: UIViewController {
         tableView.allowsSelection = false
         view = tableView
         
+        tableView.cellLayoutMarginsFollowReadableWidth = true
+        
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: Self.imageAndTextFieldCellReuseIdentifier)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: Self.colorPickerCellReuseIdentifier)
         

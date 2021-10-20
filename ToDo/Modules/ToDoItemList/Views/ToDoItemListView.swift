@@ -30,6 +30,8 @@ public class ToDoItemListView: UIViewController {
         tableView.delegate = self
         view = tableView
         
+        tableView.cellLayoutMarginsFollowReadableWidth = true
+        
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: Self.toDoItemCellReuseIdentifier)
         
         // Setting up navigation item
