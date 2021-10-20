@@ -96,6 +96,10 @@ public class AddEditGroupView: UIViewController {
         ])
     }
     
+    private func setupColorPicker() {
+        
+    }
+    
     private func setImageViewColor(_ color: UIColor) {
         let config = UIImage.SymbolConfiguration(paletteColors: [.white, color])
         groupImageView.image = UIImage(systemName: "list.bullet.circle.fill")?.applyingSymbolConfiguration(config)
@@ -108,20 +112,27 @@ public class AddEditGroupView: UIViewController {
 extension AddEditGroupView: AnyAddEditGroupView {
     
     public func showAddScreen(withColorOptions colors: [UIColor]) {
-        colorOptions = colors
         navigationItem.title = NSLocalizedString("add_list_title", comment: "")
+        colorOptions = colors
+        
         let color = colors.first ?? UIColor.systemBlue
         setImageViewColor(color)
+        
+        setupColorPicker()
     }
     
     public func showEditScreen(for group: ToDoGroupModel, withColorOptions colors: [UIColor]) {
-        self.group = group
-        colorOptions = colors
-        selectedColor = group.color
         navigationItem.title = NSLocalizedString("edit_list_title", comment: "")
+        colorOptions = colors
+        
+        self.group = group
+        selectedColor = group.color
+        
         setImageViewColor(selectedColor ?? UIColor.systemBlue)
         
         nameTextField.text = group.name
+        
+        setupColorPicker()
     }
 }
 
