@@ -37,6 +37,11 @@ public class AddEditGroupView: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Setting up navigation bar
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveBarButtonTapped))
+        
         // Setting up table view
         tableView = UITableView(frame: view.frame, style: .insetGrouped)
         tableView.dataSource = self
@@ -213,6 +218,15 @@ public class AddEditGroupView: UIViewController {
         
         lastSelectedView = view
     }
+    
+    @objc private func cancelButtonTapped() {
+        presenter?.dismiss()
+    }
+    
+    @objc private func saveBarButtonTapped() {
+        presenter?.saveGroup(name: nameTextField.text ?? "", color: selectedColor ?? .systemBlue)
+        presenter?.dismiss()
+    }
 }
 
 // MARK: - Module methods
@@ -222,6 +236,7 @@ extension AddEditGroupView: AnyAddEditGroupView {
     public func showAddScreen(withColorOptions colors: [UIColor]) {
         navigationItem.title = NSLocalizedString("add_list_title", comment: "")
         colorOptions = colors
+        selectedColor = colorOptions.first
         
         let color = colors.first ?? UIColor.systemBlue
         setImageViewColor(color)
@@ -234,7 +249,7 @@ extension AddEditGroupView: AnyAddEditGroupView {
         colorOptions = colors
         
         self.group = group
-        selectedColor = group.color
+        selectedColor = group.color ?? colorOptions.first
         
         setImageViewColor(selectedColor ?? UIColor.systemBlue)
         

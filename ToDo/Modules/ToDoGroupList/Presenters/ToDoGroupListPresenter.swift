@@ -43,5 +43,6 @@ extension ToDoGroupListPresenter: AnyToDoGroupListInteractorOutput {
 extension ToDoGroupListPresenter: AddEditGroupModuleDelegate {
     public func dismissAddEditScreen() {
         wireframe?.dismissAddEditModule(parent: view as? UIViewController ?? UIViewController())
+        interactor?.retrieveToDoGroupList()
     }
 }

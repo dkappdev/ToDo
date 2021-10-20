@@ -30,7 +30,7 @@ public protocol AnyAddEditGroupPresenter: AnyObject {
     var delegate: AddEditGroupModuleDelegate? { get set }
     
     func viewDidLoad()
-    func cancel()
+    func dismiss()
     func saveGroup(name: String, color: UIColor)
 }
 

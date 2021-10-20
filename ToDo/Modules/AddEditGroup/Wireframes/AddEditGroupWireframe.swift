@@ -20,6 +20,7 @@ public class AddEditGroupWireframe: AnyAddEditGroupWireframe {
         presenter.view = view
         presenter.wireframe = wireframe
         presenter.interactor = interactor
+        presenter.delegate = delegate
         
         interactor.presenter = presenter
         interactor.localDataManager = localDataManager

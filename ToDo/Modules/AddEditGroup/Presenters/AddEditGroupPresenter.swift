@@ -29,7 +29,7 @@ public class AddEditGroupPresenter: AnyAddEditGroupPresenter {
         }
     }
     
-    public func cancel() {
+    public func dismiss() {
         delegate?.dismissAddEditScreen()
     }
     
