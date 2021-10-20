@@ -18,7 +18,7 @@ public class ToDoGroupListPresenter: AnyToDoGroupListPresenter {
     }
     
     public func editGroup(_ group: ToDoGroupModel) {
-        wireframe?.presentEditGroupScreen(for: group)
+        wireframe?.presentEditGroupModule(for: group, withDelegate: self, from: view as? UIViewController ?? UIViewController())
     }
     
     public func deleteGroup(_ group: ToDoGroupModel) {
@@ -30,12 +30,19 @@ public class ToDoGroupListPresenter: AnyToDoGroupListPresenter {
     }
     
     public func addGroup() {
-        wireframe?.presentAddGroupScreen()
+        wireframe?.presentAddGroupModule(withDelegate: self, from: view as? UIViewController ?? UIViewController())
     }
 }
 
 extension ToDoGroupListPresenter: AnyToDoGroupListInteractorOutput {
     public func didRetrieveToDoGroupList(_ groupList: [ToDoGroupModel]) {
         view?.showToDoGroups(groupList)
+    }
+}
+
+extension ToDoGroupListPresenter: AddEditGroupModuleDelegate {
+    public func dismissAddEditScreen() {
+        wireframe?.dismissAddEditModule(parent: view as? UIViewController ?? UIViewController())
+        interactor?.retrieveToDoGroupList()
     }
 }

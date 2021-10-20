@@ -9,3 +9,6 @@
 "group_list_title" = "Списки";
 "edit_action_accessibility_label" = "Редактировать";
 "delete_action_accessibility_label" = "Удалить";
+"edit_list_title" = "Изменить список";
+"add_list_title" = "Новый список";
+"list_name_placeholder" = "Название списка";
