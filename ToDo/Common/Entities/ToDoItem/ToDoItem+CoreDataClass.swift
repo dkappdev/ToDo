@@ -14,7 +14,7 @@ public class ToDoItem: NSManagedObject {
     /// Creates an instance of `ToDoItemModel` from Core Data class
     /// - Returns: Representation of a `ToDoItem` as a `ToDoItemModel`
     public func model() -> ToDoItemModel? {
-        ToDoItemModel(dueDate: dueDate, dateAdded: dateAdded, id: id, isCompleted: isCompleted, text: text, group: group)
+        ToDoItemModel(dueDate: dueDate, dateAdded: dateAdded, id: id, isCompleted: isCompleted, text: text, group: group?.model())
     }
     
     /// Converts `ToDoItemModel` to Core Data class
@@ -25,6 +25,8 @@ public class ToDoItem: NSManagedObject {
         id = model.id
         isCompleted = model.isCompleted
         text = model.text
-        group = model.group
+        let groupObject = ToDoGroup()
+        groupObject.setup(with: model.group ?? ToDoGroupModel(id: nil, color: nil, name: nil, items: nil))
+        group = groupObject
     }
 }
