@@ -35,6 +35,7 @@
 		E2874741271D84300084D189 /* ToDoItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E287473D271D84300084D189 /* ToDoItem+CoreDataProperties.swift */; };
 		E29E38402718C4E90093F0E0 /* ToDoGroupListProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29E383F2718C4E90093F0E0 /* ToDoGroupListProtocols.swift */; };
 		E2C1D7A12721BBE700F11672 /* AddEditItemCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C1D7A02721BBE700F11672 /* AddEditItemCoreDataManager.swift */; };
+		E2C1D7A42721D75800F11672 /* AddEditItemInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C1D7A32721D75800F11672 /* AddEditItemInteractor.swift */; };
 		E2C7930F2718281900565801 /* ToDoGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C7930E2718281900565801 /* ToDoGroupModel.swift */; };
 		E2C79311271829F400565801 /* ToDoItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C79310271829F400565801 /* ToDoItemModel.swift */; };
 		E2F2FDDD27198FAF000D8ECF /* ToDoItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2FDD927198FAF000D8ECF /* ToDoItem+CoreDataClass.swift */; };
@@ -75,6 +76,7 @@
 		E287473D271D84300084D189 /* ToDoItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDoItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E29E383F2718C4E90093F0E0 /* ToDoGroupListProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoGroupListProtocols.swift; sourceTree = "<group>"; };
 		E2C1D7A02721BBE700F11672 /* AddEditItemCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditItemCoreDataManager.swift; sourceTree = "<group>"; };
+		E2C1D7A32721D75800F11672 /* AddEditItemInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditItemInteractor.swift; sourceTree = "<group>"; };
 		E2C7930E2718281900565801 /* ToDoGroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoGroupModel.swift; sourceTree = "<group>"; };
 		E2C79310271829F400565801 /* ToDoItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemModel.swift; sourceTree = "<group>"; };
 		E2F2FDD927198FAF000D8ECF /* ToDoItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDoItem+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 		E283C11D2720A45B00276BA3 /* Interactors */ = {
 			isa = PBXGroup;
 			children = (
+				E2C1D7A32721D75800F11672 /* AddEditItemInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 			files = (
 				E20D2EBF271AEE98008097A0 /* ToDoGroupListPresenter.swift in Sources */,
 				E22C30DF271D793D0068C74F /* ToDoItemListWireframe.swift in Sources */,
+				E2C1D7A42721D75800F11672 /* AddEditItemInteractor.swift in Sources */,
 				E2C79311271829F400565801 /* ToDoItemModel.swift in Sources */,
 				E20D2EB72719C7A5008097A0 /* ToDoGroupListCoreDataManager.swift in Sources */,
 				E24E0785271F487E00ECB82F /* AddEditGroupWireframe.swift in Sources */,
