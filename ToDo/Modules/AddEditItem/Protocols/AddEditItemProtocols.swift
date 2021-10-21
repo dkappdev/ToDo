@@ -49,7 +49,7 @@ public protocol AnyAddEditItemInteractorOutput: AnyObject {
 }
 
 public protocol AnyAddEditItemLocalDataManager: AnyObject {
-    func updateitem(_ item: ToDoItemModel)
+    func updateItem(_ item: ToDoItemModel)
     func createNewItem(_ item: ToDoItemModel)
 }
 
