@@ -18,5 +18,9 @@ public class ToDoItemListInteractor: AnyToDoItemListInteractorInput {
     
     public func removeToDoItem(_ item: ToDoItemModel) {
         localDataManager?.removeToDoItem(item)
+        
+        // Removing all pending notifications
+        item.dueDate = nil
+        item.updateNotifications()
     }
 }

@@ -59,6 +59,7 @@ public class ToDoItemListView: UIViewController {
     private func deleteItem(at indexPath: IndexPath) {
         let item = itemList.remove(at: indexPath.row)
         presenter?.deleteItem(item)
+        
         tableView.deleteRows(at: [indexPath], with: .automatic)
     }
     
