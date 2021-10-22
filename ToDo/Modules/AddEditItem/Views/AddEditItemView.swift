@@ -147,6 +147,11 @@ public class AddEditItemView: UIViewController {
     
     @objc private func dueDateChanged(_ datePicker: UIDatePicker) {
         setupDateLabel()
+        
+        // If user changed the due date, they most likely want to receive notification on that day
+        // Automatically turning on notifications
+        
+        dueDateSwitch.setOn(true, animated: true)
     }
     
     // MARK: - Utility functions
