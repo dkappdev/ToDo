@@ -117,11 +117,21 @@ extension ToDoGroupListView: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: Self.toDoGroupCellReuseIdentifier, for: indexPath)
         let group = groupList[indexPath.row]
         
+        cell.accessoryType = .disclosureIndicator
+        
         var content = cell.defaultContentConfiguration()
         content.text = group.name
+        
         let imageConfig = UIImage.SymbolConfiguration(paletteColors: [.white, group.color ?? .systemBlue])
         let image = UIImage(systemName: "list.bullet.circle.fill")?.applyingSymbolConfiguration(imageConfig)
         content.image = image
+        
+        content.prefersSideBySideTextAndSecondaryText = true
+        content.secondaryText = "\(group.items?.count ?? 0)"
+        
+        content.secondaryTextProperties.font = .preferredFont(forTextStyle: .body)
+        content.secondaryTextProperties.color = .secondaryLabel
+        
         cell.contentConfiguration = content
         
         return cell
