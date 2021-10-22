@@ -39,41 +39,12 @@ public class AddEditItemPresenter: AnyAddEditItemPresenter {
     public func saveItem(text: String, dueDate: Date?) {
         if let item = item {
             let updatedItem = ToDoItemModel(dueDate: dueDate, dateAdded: item.dateAdded, id: item.id, isCompleted: item.isCompleted, text: text, group: item.group)
-            toggleNotification(for: updatedItem)
+            updatedItem.updateNotifications()
             interactor?.updateItem(updatedItem)
         } else {
             let newItem = ToDoItemModel(dueDate: dueDate, dateAdded: Date(), id: UUID(), isCompleted: false, text: text, group: group)
-            toggleNotification(for: newItem)
+            newItem.updateNotifications()
             interactor?.createNewItem(newItem)
-        }
-    }
-    
-    private func toggleNotification(for item: ToDoItemModel) {
-        // If due date is not specified for the item, remove all pending notifications
-        guard let dueDate = item.dueDate else {
-            let notificationId = item.id?.uuidString ?? ""
-            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notificationId])
-            return
-        }
-        
-        // Otherwise create a notification request
-        // Since item ID is also used as the notification ID, all previous requests will be automatically removed
-        
-        let content = UNMutableNotificationContent()
-        content.title = item.group?.name ?? ""
-        content.body = item.text ?? ""
-        content.sound = .default
-        
-        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: dueDate)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-        
-        let uuidString = item.id?.uuidString ?? ""
-        let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
-
-        UNUserNotificationCenter.current().add(request) { error in
-            if let error = error {
-                print(error.localizedDescription)
-            }
         }
     }
 }
