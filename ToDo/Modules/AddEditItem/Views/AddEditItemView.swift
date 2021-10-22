@@ -17,6 +17,7 @@ public class AddEditItemView: UIViewController {
     private var textField: UITextField!
     private var datePicker: UIDatePicker!
     private var textFieldCell: UITableViewCell!
+    private var dueDateSwitch: UISwitch!
     private var datePickerCell: UITableViewCell!
     
     // VIPER properties
@@ -27,11 +28,31 @@ public class AddEditItemView: UIViewController {
     
     // MARK: - View life cycle
     
-    
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Setting up navigation bar
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelBarButtonTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveBarButtonTapped))
+    }
     
     // MARK: - Cell setup
     
     // MARK: - Responding to user actions
+    
+    @objc private func cancelBarButtonTapped() {
+        presenter?.dismiss()
+    }
+    
+    @objc private func saveBarButtonTapped() {
+        if dueDateSwitch.isOn {
+            presenter?.saveItem(text: textField.text ?? "", dueDate: datePicker.date)
+        } else {
+            presenter?.saveItem(text: textField.text ?? "", dueDate: nil)
+        }
+        presenter?.dismiss()
+    }
     
 }
 
