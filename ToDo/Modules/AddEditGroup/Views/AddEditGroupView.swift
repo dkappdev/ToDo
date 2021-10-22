@@ -39,7 +39,7 @@ public class AddEditGroupView: UIViewController {
         
         // Setting up navigation bar
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonTapped))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelBarButtonTapped))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveBarButtonTapped))
         
         // Setting up table view
@@ -221,7 +221,7 @@ public class AddEditGroupView: UIViewController {
         lastSelectedView = view
     }
     
-    @objc private func cancelButtonTapped() {
+    @objc private func cancelBarButtonTapped() {
         presenter?.dismiss()
     }
     
