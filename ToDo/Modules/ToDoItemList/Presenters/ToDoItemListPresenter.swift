@@ -46,6 +46,7 @@ extension ToDoItemListPresenter: AnyToDoItemListInteractorOutput {
 
 extension ToDoItemListPresenter: AddEditItemModuleDelegate {
     public func dismissAddEditScreen() {
+        interactor?.requestUpdatedToDoGroup(group)
         wireframe?.dismissAddEditModule(parent: view as? UIViewController ?? UIViewController())
     }
 }

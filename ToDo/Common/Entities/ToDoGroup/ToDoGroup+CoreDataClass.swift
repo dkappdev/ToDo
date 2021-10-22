@@ -30,6 +30,5 @@ public class ToDoGroup: NSManagedObject {
         id = model.id
         color = model.color
         name = model.name
-        items = NSSet(array: model.items ?? [])
     }
 }

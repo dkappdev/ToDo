@@ -12,3 +12,6 @@
 "edit_list_title" = "Edit List";
 "add_list_title" = "Add List";
 "list_name_placeholder" = "List Name";
+"edit_item_title" = "Edit Item";
+"add_item_title" = "Add Item";
+"todo_text_placeholder" = "Title";
