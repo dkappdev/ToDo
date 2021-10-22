@@ -38,6 +38,8 @@ public class ToDoGroupListView: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addGroup))
         
         presenter?.viewDidLoad()
+        
+        requestNotificationAccess()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -73,6 +75,17 @@ public class ToDoGroupListView: UIViewController {
         guard let color = color else { return }
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: color]
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: color]
+    }
+    
+    private func requestNotificationAccess() {
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.getNotificationSettings { setting in
+            if setting.authorizationStatus == .notDetermined {
+                notificationCenter.requestAuthorization(options: [.alert, .sound]) { granted, error in
+                    
+                }
+            }
+        }
     }
 }
 
