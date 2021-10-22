@@ -19,7 +19,7 @@ public class ToDoItemModel {
     /// Text describing the to-do task
     public var text: String?
     /// Group that contains the item
-    public weak var group: ToDoGroupModel?
+    public var group: ToDoGroupModel?
     
     public init(dueDate: Date?, dateAdded: Date?, id: UUID?, isCompleted: Bool, text: String?, group: ToDoGroupModel?) {
         self.dueDate = dueDate

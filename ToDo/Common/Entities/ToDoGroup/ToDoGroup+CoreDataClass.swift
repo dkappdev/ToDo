@@ -21,7 +21,9 @@ public class ToDoGroup: NSManagedObject {
         guard let items = items else { return nil }
         let itemModels = items.compactMap { $0.model() }
         
-        return ToDoGroupModel(id: id, color: color, name: name, items: itemModels)
+        let model = ToDoGroupModel(id: id, color: color, name: name, items: itemModels)
+        
+        return model
     }
     
     /// Converts `ToDoGroupModel` to Core Data class
