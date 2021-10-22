@@ -109,6 +109,13 @@ extension ToDoItemListView: UITableViewDataSource {
         
         var content = cell.defaultContentConfiguration()
         content.text = item.text
+        if let dueDate = item.dueDate {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .short
+            content.secondaryText = dateFormatter.string(from: dueDate)
+            content.secondaryTextProperties.color = .secondaryLabel
+        }
         cell.contentConfiguration = content
         
         return cell
