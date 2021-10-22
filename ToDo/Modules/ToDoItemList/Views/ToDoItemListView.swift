@@ -114,7 +114,7 @@ extension ToDoItemListView: UITableViewDataSource {
             dateFormatter.dateStyle = .medium
             dateFormatter.timeStyle = .short
             content.secondaryText = dateFormatter.string(from: dueDate)
-            content.secondaryTextProperties.color = .secondaryLabel
+            content.secondaryTextProperties.color = dueDate > Date() ? .secondaryLabel : .systemRed
         }
         cell.contentConfiguration = content
         
