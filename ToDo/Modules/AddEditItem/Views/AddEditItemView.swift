@@ -95,7 +95,6 @@ public class AddEditItemView: UIViewController {
         ])
         
         let dueDateSwitch = UISwitch()
-        dueDateSwitch.addTarget(self, action: #selector(dueDateSwitchTriggered(_:)), for: .valueChanged)
         self.dueDateSwitch = dueDateSwitch
         
         dueDateCell.contentView.addSubview(dueDateSwitch)
@@ -143,10 +142,6 @@ public class AddEditItemView: UIViewController {
             presenter?.saveItem(text: textField.text ?? "", dueDate: nil)
         }
         presenter?.dismiss()
-    }
-    
-    @objc private func dueDateSwitchTriggered(_ uiSwitch: UISwitch) {
-        #warning("create notification using presenter")
     }
     
     @objc private func dueDateChanged(_ datePicker: UIDatePicker) {
@@ -206,6 +201,17 @@ extension AddEditItemView: UITableViewDataSource {
             return datePickerCell
         default:
             return UITableViewCell()
+        }
+    }
+    
+    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return NSLocalizedString("todo_text_section_name", comment: "")
+        case 1:
+            return NSLocalizedString("reminder_section_name", comment: "")
+        default:
+            return nil
         }
     }
 }
