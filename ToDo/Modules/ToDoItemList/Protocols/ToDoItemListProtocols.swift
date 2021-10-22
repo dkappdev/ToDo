@@ -18,8 +18,10 @@ public protocol AnyToDoItemListView: AnyObject {
 public protocol AnyToDoItemListWireframe: AnyObject {
     static func createToDoItemListModule(for group: ToDoGroupModel) -> UIViewController
     
-    func presentAddItemScreen()
-    func presentEditItemScreen(for item: ToDoItemModel)
+    func presentAddItemModule(forItemInGroup group: ToDoGroupModel, withDelegate delegate: AddEditItemModuleDelegate, from view: UIViewController)
+    func presentEditItemModule(for item: ToDoItemModel, in group: ToDoGroupModel, withDelegate delegate: AddEditItemModuleDelegate, from view: UIViewController)
+    func dismissAddEditModule(parent: UIViewController)
+    
 }
 
 // View -> Presenter

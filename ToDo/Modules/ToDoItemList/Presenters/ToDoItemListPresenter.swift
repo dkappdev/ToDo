@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class ToDoItemListPresenter: AnyToDoItemListPresenter {
     public weak var view: AnyToDoItemListView?
@@ -23,11 +24,11 @@ public class ToDoItemListPresenter: AnyToDoItemListPresenter {
     }
     
     public func addItem() {
-        wireframe?.presentAddItemScreen()
+        wireframe?.presentAddItemModule(forItemInGroup: group, withDelegate: self, from: view as? UIViewController ?? UIViewController())
     }
     
     public func editItem(_ item: ToDoItemModel) {
-        wireframe?.presentEditItemScreen(for: item)
+        wireframe?.presentEditItemModule(for: item, in: group, withDelegate: self, from: view as? UIViewController ?? UIViewController())
     }
     
     public func deleteItem(_ item: ToDoItemModel) {
@@ -40,5 +41,12 @@ public class ToDoItemListPresenter: AnyToDoItemListPresenter {
 extension ToDoItemListPresenter: AnyToDoItemListInteractorOutput {
     public func didReceiveNewToDoGroup(_ group: ToDoGroupModel) {
         view?.showToDoItemsForGroup(group)
+    }
+}
+
+extension ToDoItemListPresenter: AddEditItemModuleDelegate {
+    public func dismissAddEditScreen() {
+        interactor?.requestUpdatedToDoGroup(group)
+        wireframe?.dismissAddEditModule(parent: view as? UIViewController ?? UIViewController())
     }
 }

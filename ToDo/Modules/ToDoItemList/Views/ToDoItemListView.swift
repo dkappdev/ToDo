@@ -128,4 +128,10 @@ extension ToDoItemListView: UITableViewDelegate {
         
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let itemModel = itemList[indexPath.row]
+        presenter?.editItem(itemModel)
+    }
 }

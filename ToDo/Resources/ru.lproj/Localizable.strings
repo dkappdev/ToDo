@@ -9,6 +9,11 @@
 "group_list_title" = "Списки";
 "edit_action_accessibility_label" = "Редактировать";
 "delete_action_accessibility_label" = "Удалить";
-"edit_list_title" = "Изменить список";
+"edit_list_title" = "Редактирование";
 "add_list_title" = "Новый список";
 "list_name_placeholder" = "Название списка";
+"edit_item_title" = "Новая задача";
+"add_item_title" = "Редактирование";
+"todo_text_placeholder" = "Название";
+"todo_text_section_name" = "Название";
+"reminder_section_name" = "Напоминание";

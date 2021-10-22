@@ -8,6 +8,7 @@
 import UIKit
 
 public class ToDoItemListWireframe: AnyToDoItemListWireframe {
+    
     public static func createToDoItemListModule(for group: ToDoGroupModel) -> UIViewController {
         let view: AnyToDoItemListView & UIViewController = ToDoItemListView()
         let presenter: AnyToDoItemListPresenter & AnyToDoItemListInteractorOutput = ToDoItemListPresenter(group: group)
@@ -26,13 +27,19 @@ public class ToDoItemListWireframe: AnyToDoItemListWireframe {
         
         return view
     }
-    
-    public func presentAddItemScreen() {
-        assertionFailure("presentAddItemScreen() has not yet been implemented")
+
+    public func presentAddItemModule(forItemInGroup group: ToDoGroupModel, withDelegate delegate: AddEditItemModuleDelegate, from view: UIViewController) {
+        let addEditItemModule = AddEditItemWireframe.createAddEditItemModule(for: nil, inGroup: group, with: delegate)
+        view.present(addEditItemModule, animated: true, completion: nil)
     }
     
-    public func presentEditItemScreen(for item: ToDoItemModel) {
-        assertionFailure("presentEditItemScreen(for:) has not yet been implemented")
+    public func presentEditItemModule(for item: ToDoItemModel, in group: ToDoGroupModel, withDelegate delegate: AddEditItemModuleDelegate, from view: UIViewController) {
+        let addEditItemModule = AddEditItemWireframe.createAddEditItemModule(for: item, inGroup: group, with: delegate)
+        view.present(addEditItemModule, animated: true, completion: nil)
+    }
+    
+    public func dismissAddEditModule(parent: UIViewController) {
+        parent.dismiss(animated: true, completion: nil)
     }
     
 }
