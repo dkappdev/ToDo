@@ -88,6 +88,7 @@ public class AddEditGroupView: UIViewController {
         // Text field
         
         let textField = UITextField()
+        textField.delegate = self
         textField.borderStyle = .roundedRect
         textField.textAlignment = .center
         textField.font = .preferredFont(forTextStyle: .headline)
@@ -289,5 +290,14 @@ extension AddEditGroupView: UITableViewDataSource {
 extension AddEditGroupView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
+    }
+}
+
+// MARK: - Text field delegate
+
+extension AddEditGroupView: UITextFieldDelegate {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return false
     }
 }

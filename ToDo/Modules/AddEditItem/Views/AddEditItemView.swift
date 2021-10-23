@@ -67,6 +67,7 @@ public class AddEditItemView: UIViewController {
         // Text field
         
         let textField = UITextField()
+        textField.delegate = self
         textField.borderStyle = .none
         textField.placeholder = NSLocalizedString("todo_text_placeholder", comment: "")
         self.textField = textField
@@ -226,4 +227,13 @@ extension AddEditItemView: UITableViewDataSource {
 
 extension AddEditItemView: UITableViewDelegate {
     
+}
+
+// MARK: - Text field delegate
+
+extension AddEditItemView: UITextFieldDelegate {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return false
+    }
 }
