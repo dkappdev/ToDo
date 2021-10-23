@@ -117,6 +117,12 @@ extension ToDoItemListView: UITableViewDataSource {
             content.secondaryText = dateFormatter.string(from: dueDate)
             content.secondaryTextProperties.color = dueDate > Date() ? .secondaryLabel : .systemRed
         }
+        
+        if item.isCompleted {
+            content.textProperties.color = .systemGray
+            content.secondaryTextProperties.color = .systemGray
+        }
+        
         cell.contentConfiguration = content
         
         return cell
@@ -135,6 +141,25 @@ extension ToDoItemListView: UITableViewDelegate {
         deleteAction.accessibilityLabel = NSLocalizedString("delete_action_accessibility_label", comment: "")
         
         return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+    
+    public func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let item = itemList[indexPath.row]
+        let isCompleted = item.isCompleted
+        let markAsCompletedAction = UIContextualAction(style: .normal, title: nil) { action, view, completionHandler in
+            self.presenter?.toggleCompleted(for: item, isCompleted: !isCompleted)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.presenter?.requestUpdatedToDoGroup()
+            }
+            
+            completionHandler(true)
+        }
+        markAsCompletedAction.image = isCompleted ? UIImage(systemName: "text.badge.xmark") : UIImage(systemName: "text.badge.checkmark")
+        markAsCompletedAction.backgroundColor = isCompleted ? .systemGray : .systemBlue
+        markAsCompletedAction.accessibilityLabel = isCompleted ? NSLocalizedString("mark_as_completed_accessibility_label", comment: "") : NSLocalizedString("mark_as_not_completed_accessibility_label", comment: "")
+        
+        return UISwipeActionsConfiguration(actions: [markAsCompletedAction])
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

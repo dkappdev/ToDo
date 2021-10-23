@@ -23,4 +23,10 @@ public class ToDoItemListInteractor: AnyToDoItemListInteractorInput {
         item.dueDate = nil
         item.updateNotifications()
     }
+    
+    public func toggleCompleted(for item: ToDoItemModel, isCompleted: Bool) {
+        item.isCompleted = isCompleted
+        item.updateNotifications()
+        localDataManager?.toggleCompleted(for: item, isCompleted: isCompleted)
+    }
 }

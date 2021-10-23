@@ -37,4 +37,20 @@ public class ToDoItemListCoreDataManager: AnyToDoItemListLocalDataManager {
         }
         persistenceController.saveContext()
     }
+    
+    public func toggleCompleted(for item: ToDoItemModel, isCompleted: Bool) {
+        // Fetching item
+        let fetchRequest = ToDoItem.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", argumentArray: [item.id as Any])
+        let items = try? persistenceController.context.fetch(fetchRequest)
+        
+        // Making sure only one item with given ID exists
+        
+        guard items?.count == 1,
+              let item = items?.first else { return }
+        
+        item.isCompleted = isCompleted
+        
+        persistenceController.saveContext()
+    }
 }

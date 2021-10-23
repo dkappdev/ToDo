@@ -33,11 +33,12 @@ public class ToDoItemModel {
     
     public func updateNotifications() {
         // If due date is not specified for the item, remove all pending notifications
-        guard let dueDate = dueDate else {
-            let notificationId = id?.uuidString ?? ""
-            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notificationId])
-            return
-        }
+        guard let dueDate = dueDate,
+              !isCompleted else {
+                  let notificationId = id?.uuidString ?? ""
+                  UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notificationId])
+                  return
+              }
         
         // Otherwise create a notification request
         // Since item ID is also used as the notification ID, all previous requests will be automatically removed

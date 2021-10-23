@@ -35,7 +35,13 @@ public class ToDoItemListPresenter: AnyToDoItemListPresenter {
         interactor?.removeToDoItem(item)
     }
     
+    public func toggleCompleted(for item: ToDoItemModel, isCompleted: Bool) {
+        interactor?.toggleCompleted(for: item, isCompleted: isCompleted)
+    }
     
+    public func requestUpdatedToDoGroup() {
+        interactor?.requestUpdatedToDoGroup(group)
+    }
 }
 
 extension ToDoItemListPresenter: AnyToDoItemListInteractorOutput {
