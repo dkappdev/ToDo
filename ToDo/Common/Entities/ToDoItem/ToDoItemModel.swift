@@ -71,3 +71,5 @@ extension ToDoItemModel: Hashable {
         hasher.combine(id)
     }
 }
+
+extension ToDoItemModel: Identifiable { }

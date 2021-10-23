@@ -35,3 +35,5 @@ extension ToDoGroupModel: Hashable {
         hasher.combine(id)
     }
 }
+
+extension ToDoGroupModel: Identifiable { }

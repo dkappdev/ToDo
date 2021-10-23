@@ -12,6 +12,11 @@ public class ToDoItemListView: UIViewController {
     private static let toDoItemCellReuseIdentifier = "ToDoItemCell"
     private var tableView: UITableView!
     
+    // Table view data source
+    private typealias DataSourceType = UITableViewDiffableDataSource<Int, ToDoItemModel.ID>
+    private var dataSource: DataSourceType!
+    private static let defaultSectionIndex = 0
+    
     // VIPER properties
     public var presenter: AnyToDoItemListPresenter?
     private var itemList: [ToDoItemModel] = []
@@ -26,7 +31,7 @@ public class ToDoItemListView: UIViewController {
         
         // Setting up table view
         tableView = UITableView(frame: view.frame, style: .grouped)
-        tableView.dataSource = self
+        dataSource = createDataSource()
         tableView.delegate = self
         view = tableView
         
@@ -59,8 +64,7 @@ public class ToDoItemListView: UIViewController {
     private func deleteItem(at indexPath: IndexPath) {
         let item = itemList.remove(at: indexPath.row)
         presenter?.deleteItem(item)
-        
-        tableView.deleteRows(at: [indexPath], with: .automatic)
+        presenter?.requestUpdatedToDoGroup()
     }
     
     // MARK: - Utility functions
@@ -71,6 +75,48 @@ public class ToDoItemListView: UIViewController {
         guard let color = color else { return }
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: color as Any]
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: color as Any]
+    }
+    
+    // MARK: - Table view data source
+    
+    private func createDataSource() -> DataSourceType {
+        return .init(tableView: tableView) { tableView, indexPath, itemIdentifier in
+            let cell = tableView.dequeueReusableCell(withIdentifier: Self.toDoItemCellReuseIdentifier, for: indexPath)
+            let item = self.itemList[indexPath.row]
+            
+            var content = cell.defaultContentConfiguration()
+            content.text = item.text
+            if let dueDate = item.dueDate {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateStyle = .medium
+                dateFormatter.timeStyle = .short
+                content.secondaryText = dateFormatter.string(from: dueDate)
+                content.secondaryTextProperties.color = dueDate > Date() ? .secondaryLabel : .systemRed
+            }
+            
+            if item.isCompleted {
+                content.textProperties.color = .systemGray
+                content.secondaryTextProperties.color = .systemGray
+            }
+            
+            cell.contentConfiguration = content
+            
+            return cell
+        }
+    }
+    
+    private func updateTableView() {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, ToDoItemModel.ID>()
+        snapshot.appendSections([Self.defaultSectionIndex])
+        
+        let itemIdentifiers = itemList.map { $0.id }
+        
+        snapshot.appendItems(itemIdentifiers, toSection: Self.defaultSectionIndex)
+        
+        dataSource.apply(snapshot)
+        
+        snapshot.reconfigureItems(itemIdentifiers)
+        dataSource.apply(snapshot)
     }
 }
 
@@ -89,43 +135,7 @@ extension ToDoItemListView: AnyToDoItemListView {
         
         // Displaying items
         itemList = group.items ?? []
-        tableView.reloadData()
-    }
-}
-
-// MARK: - Table view data source
-
-extension ToDoItemListView: UITableViewDataSource {
-    public func numberOfSections(in tableView: UITableView) -> Int {
-        1
-    }
-    
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        itemList.count
-    }
-    
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Self.toDoItemCellReuseIdentifier, for: indexPath)
-        let item = itemList[indexPath.row]
-        
-        var content = cell.defaultContentConfiguration()
-        content.text = item.text
-        if let dueDate = item.dueDate {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .medium
-            dateFormatter.timeStyle = .short
-            content.secondaryText = dateFormatter.string(from: dueDate)
-            content.secondaryTextProperties.color = dueDate > Date() ? .secondaryLabel : .systemRed
-        }
-        
-        if item.isCompleted {
-            content.textProperties.color = .systemGray
-            content.secondaryTextProperties.color = .systemGray
-        }
-        
-        cell.contentConfiguration = content
-        
-        return cell
+        updateTableView()
     }
 }
 
@@ -149,7 +159,7 @@ extension ToDoItemListView: UITableViewDelegate {
         let markAsCompletedAction = UIContextualAction(style: .normal, title: nil) { action, view, completionHandler in
             self.presenter?.toggleCompleted(for: item, isCompleted: !isCompleted)
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.presenter?.requestUpdatedToDoGroup()
             }
             
@@ -158,6 +168,7 @@ extension ToDoItemListView: UITableViewDelegate {
         markAsCompletedAction.image = isCompleted ? UIImage(systemName: "text.badge.xmark") : UIImage(systemName: "text.badge.checkmark")
         markAsCompletedAction.backgroundColor = isCompleted ? .systemGray : .systemBlue
         markAsCompletedAction.accessibilityLabel = isCompleted ? NSLocalizedString("mark_as_completed_accessibility_label", comment: "") : NSLocalizedString("mark_as_not_completed_accessibility_label", comment: "")
+        
         
         return UISwipeActionsConfiguration(actions: [markAsCompletedAction])
     }
