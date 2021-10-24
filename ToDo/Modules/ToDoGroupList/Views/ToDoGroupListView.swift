@@ -50,6 +50,8 @@ public class ToDoGroupListView: UIViewController {
         tableView.indexPathsForVisibleRows?.forEach{ indexPath in
             tableView.deselectRow(at: indexPath, animated: true)
         }
+        
+        presenter?.requestNewGroupList()
     }
     
     // MARK: - Responding to user actions
