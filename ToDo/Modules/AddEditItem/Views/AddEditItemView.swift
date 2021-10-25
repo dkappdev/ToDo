@@ -113,7 +113,6 @@ public class AddEditItemView: UIViewController {
         datePicker.preferredDatePickerStyle = .inline
         datePicker.datePickerMode = .dateAndTime
         datePicker.date = Calendar.current.date(byAdding: .day, value: 1, to: Date()) ?? Date()
-        datePicker.minimumDate = Calendar.current.date(byAdding: .minute, value: 1, to: Date()) ?? Date()
         self.datePicker = datePicker
         
         datePickerCell.contentView.addSubview(datePicker)
