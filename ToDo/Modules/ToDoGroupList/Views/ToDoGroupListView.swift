@@ -160,7 +160,10 @@ extension ToDoGroupListView: UITableViewDelegate {
         editAction.accessibilityLabel = NSLocalizedString("edit_action_accessibility_label", comment: "")
         editAction.backgroundColor = .systemBlue
         
-        return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, editAction])
+        configuration.performsFirstActionWithFullSwipe = false
+        
+        return configuration
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
