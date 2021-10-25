@@ -34,6 +34,9 @@ public protocol AnyToDoItemListPresenter: AnyObject {
     func addItem()
     func editItem(_ item: ToDoItemModel)
     func deleteItem(_ item: ToDoItemModel)
+    func requestUpdatedToDoGroup()
+    
+    func toggleCompleted(for item: ToDoItemModel, isCompleted: Bool)
 }
 
 // Presenter -> Interactor
@@ -43,6 +46,7 @@ public protocol AnyToDoItemListInteractorInput: AnyObject {
     
     func requestUpdatedToDoGroup(_ group: ToDoGroupModel)
     func removeToDoItem(_ item: ToDoItemModel)
+    func toggleCompleted(for item: ToDoItemModel, isCompleted: Bool)
 }
 
 // Interactor -> Presenter
@@ -53,4 +57,5 @@ public protocol AnyToDoItemListInteractorOutput: AnyObject {
 public protocol AnyToDoItemListLocalDataManager: AnyObject {
     func updateToDoGroup(_ group: ToDoGroupModel) -> ToDoGroupModel
     func removeToDoItem(_ item: ToDoItemModel)
+    func toggleCompleted(for item: ToDoItemModel, isCompleted: Bool)
 }

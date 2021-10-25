@@ -17,3 +17,5 @@
 "todo_text_placeholder" = "Title";
 "todo_text_section_name" = "Title";
 "reminder_section_name" = "Reminder";
+"mark_as_completed_accessibility_label" = "Mark as completed";
+"mark_as_not_completed_accessibility_label" = "Mark as not completed";

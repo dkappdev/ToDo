@@ -67,6 +67,7 @@ public class AddEditItemView: UIViewController {
         // Text field
         
         let textField = UITextField()
+        textField.delegate = self
         textField.borderStyle = .none
         textField.placeholder = NSLocalizedString("todo_text_placeholder", comment: "")
         self.textField = textField
@@ -112,7 +113,6 @@ public class AddEditItemView: UIViewController {
         datePicker.preferredDatePickerStyle = .inline
         datePicker.datePickerMode = .dateAndTime
         datePicker.date = Calendar.current.date(byAdding: .day, value: 1, to: Date()) ?? Date()
-        datePicker.minimumDate = Calendar.current.date(byAdding: .minute, value: 1, to: Date()) ?? Date()
         self.datePicker = datePicker
         
         datePickerCell.contentView.addSubview(datePicker)
@@ -147,6 +147,11 @@ public class AddEditItemView: UIViewController {
     
     @objc private func dueDateChanged(_ datePicker: UIDatePicker) {
         setupDateLabel()
+        
+        // If user changed the due date, they most likely want to receive notification on that day
+        // Automatically turning on notifications
+        
+        dueDateSwitch.setOn(true, animated: true)
     }
     
     // MARK: - Utility functions
@@ -221,4 +226,13 @@ extension AddEditItemView: UITableViewDataSource {
 
 extension AddEditItemView: UITableViewDelegate {
     
+}
+
+// MARK: - Text field delegate
+
+extension AddEditItemView: UITextFieldDelegate {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return false
+    }
 }

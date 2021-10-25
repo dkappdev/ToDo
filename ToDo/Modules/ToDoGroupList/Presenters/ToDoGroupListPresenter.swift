@@ -17,6 +17,10 @@ public class ToDoGroupListPresenter: AnyToDoGroupListPresenter {
         interactor?.retrieveToDoGroupList()
     }
     
+    public func requestNewGroupList() {
+        interactor?.retrieveToDoGroupList()
+    }
+    
     public func editGroup(_ group: ToDoGroupModel) {
         wireframe?.presentEditGroupModule(for: group, withDelegate: self, from: view as? UIViewController ?? UIViewController())
     }

@@ -31,6 +31,7 @@ public protocol AnyToDoGroupListPresenter: AnyObject {
     var wireframe: AnyToDoGroupListWireframe? { get set }
     
     func viewDidLoad()
+    func requestNewGroupList()
     func addGroup()
     func editGroup(_ group: ToDoGroupModel)
     func deleteGroup(_ group: ToDoGroupModel)

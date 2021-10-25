@@ -17,3 +17,5 @@
 "todo_text_placeholder" = "Название";
 "todo_text_section_name" = "Название";
 "reminder_section_name" = "Напоминание";
+"mark_as_completed_accessibility_label" = "Отметить как выполненное";
+"mark_as_not_completed_accessibility_label" = "Отметить как невыполненное";

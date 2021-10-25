@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UserNotifications
 
 public class ToDoItemModel {
     /// Due date for item
@@ -29,6 +30,36 @@ public class ToDoItemModel {
         self.text = text
         self.group = group
     }
+    
+    public func updateNotifications() {
+        // If due date is not specified for the item, remove all pending notifications
+        guard let dueDate = dueDate,
+              !isCompleted else {
+                  let notificationId = id?.uuidString ?? ""
+                  UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notificationId])
+                  return
+              }
+        
+        // Otherwise create a notification request
+        // Since item ID is also used as the notification ID, all previous requests will be automatically removed
+        
+        let content = UNMutableNotificationContent()
+        content.title = group?.name ?? ""
+        content.body = text ?? ""
+        content.sound = .default
+        
+        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: dueDate)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        
+        let uuidString = id?.uuidString ?? ""
+        let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
 
 extension ToDoItemModel: Hashable {
@@ -40,3 +71,5 @@ extension ToDoItemModel: Hashable {
         hasher.combine(id)
     }
 }
+
+extension ToDoItemModel: Identifiable { }

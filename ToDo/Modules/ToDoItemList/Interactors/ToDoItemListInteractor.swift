@@ -18,5 +18,15 @@ public class ToDoItemListInteractor: AnyToDoItemListInteractorInput {
     
     public func removeToDoItem(_ item: ToDoItemModel) {
         localDataManager?.removeToDoItem(item)
+        
+        // Removing all pending notifications
+        item.dueDate = nil
+        item.updateNotifications()
+    }
+    
+    public func toggleCompleted(for item: ToDoItemModel, isCompleted: Bool) {
+        item.isCompleted = isCompleted
+        item.updateNotifications()
+        localDataManager?.toggleCompleted(for: item, isCompleted: isCompleted)
     }
 }
